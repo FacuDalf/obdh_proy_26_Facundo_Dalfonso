@@ -128,7 +128,7 @@ ExecTC
 0
 290 392 35 35
 [FinObjetoGrafico]
-Transicion3
+CtrlAlgorithm
 0
 [ObjetoGrafico]
 [Version Objeto Grafico]
@@ -141,14 +141,14 @@ ExecTC
 2
 [Version Ramas]
 5
-Rama0
+WaitFP
 true
 Ready
 DSubEst
 ;
+
  
- 
- 
+
 ;
 ;
 ;
@@ -158,14 +158,14 @@ DSubEst
 0
 300 392 260 325 3
 [FinGraficoRama]
-Rama1
-true
+InitFlightPlan
+GExecFlightPlan()
 FlightPlan
 DSubEst
 ;
+
  
- 
- 
+
 ;
 ;
 ;
@@ -175,20 +175,20 @@ DSubEst
 0
 307 426 308 486 0
 [FinGraficoRama]
-Transicion3
+CtrlAlgorithm
 0
 [Ramas]
 2
 [Version Ramas]
 5
-Rama0
+ProgNextCtrl
 true
 FlightPlan
 DSubEst
 ;
+
  
- 
- 
+
 ;
 ;
 ;
@@ -198,14 +198,14 @@ DSubEst
 0
 510 299 546 503 0
 [FinGraficoRama]
-PlanDrone
-true
+PlanDone
+GFlightPlanDone()
 Ready
 DSubEst
 ;
+
  
- 
- 
+
 ;
 ;
 ;
@@ -242,10 +242,10 @@ true
 0
 124 112 210 153 0
 [FinGraficoTransicion]
-Transicion3
+CtrlAlgorithm
 FlightPlan
 OSubEst
-Transicion3
+CtrlAlgorithm
 DPEleccion
 ;
 [Trigger]
@@ -265,7 +265,7 @@ true
 0
 427 486 501 304 1
 [FinGraficoTransicion]
-Transicion4
+Transicion1
 SelfTest
 OSubEst
 Ready
@@ -314,7 +314,7 @@ FExecDroneTC();
 [VariablesConstantes]
 0
 [Metodos]
-4
+6
 [Version Metodos]
 21
 BasicAction
@@ -379,6 +379,31 @@ pus_service129_drone_ready();
 VNextDescentCtrl+=Pr_Time(1,0); // Add X sec + Y microsec
  Msg->Reply(SDroneReady);
  
+Guard
+GExecFlightPlan()
+0
+0
+0
+0
+1
+
+2
+
+return pus_service129_flight_plan_ready();
+Guard
+GFlightPlanDone()
+0
+0
+0
+0
+1
+
+5
+
+ return pus_service129_flight_plan_done();
+
+VNextDescentCtrl+= Pr_Time(1,0); // Add X sec + Y microsec
+
 [MaquinasSubEstados]
 0
 [FinMaquinasSubEstados]
