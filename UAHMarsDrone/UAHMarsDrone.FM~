@@ -19,9 +19,9 @@ UAHMarsDrone
 [CurrentTarget]
 0
 [MESP Directory]
-z:\home\atcsol\OBDH_2026-workspace\uah_mars_drone_freertos_hito1\asw
+C:\Users\facud\OneDrive\Documents\GitHub\obdh_proy_26_Facundo_Dalfonso\uah_mars_drone_freertos_hito1
 [MESP main Directory]
-z:\home\atcsol\OBDH_2026-workspace\uah_mars_drone_freertos_hito1
+C:\Users\facud\OneDrive\Documents\GitHub\obdh_proy_26_Facundo_Dalfonso\UAHMarsDrone
 [MESP main prototype]
 int main (void)
 [MESP main return]
