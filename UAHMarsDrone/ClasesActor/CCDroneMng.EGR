@@ -312,9 +312,16 @@ FExecDroneTC();
 355 325 320 398 2
 [FinGraficoTransicion]
 [VariablesConstantes]
+1
+[Version VariYConst]
+0
+VNextCtrl;
+Pr_Time
+
+Variable
 0
 [Metodos]
-6
+8
 [Version Metodos]
 21
 BasicAction
@@ -403,6 +410,39 @@ GFlightPlanDone()
  return pus_service129_flight_plan_done();
 
 VNextDescentCtrl+= Pr_Time(1,0); // Add X sec + Y microsec
+
+BasicAction
+FInitFlightPlan()
+0
+0
+0
+0
+1
+
+8
+
+Pr_Time time;
+time.GetTime(); // Get current monotonic time
+time+=Pr_Time(0,100); // Add X sec + Y microsec
+VNextCtrl=time;
+pus_service129_init_flight_plan();
+ VNextCtrl.InformAt(time);
+
+BasicAction
+FProgNextCtrl()
+0
+0
+0
+0
+1
+
+7
+
+Pr_Time time;
+VNextCtrl+= Pr_Time(0,100); // Add X sec + Y microsec
+time=VNextCtrl;
+
+ VNextCtrl.InformAt(time);
 
 [MaquinasSubEstados]
 0
