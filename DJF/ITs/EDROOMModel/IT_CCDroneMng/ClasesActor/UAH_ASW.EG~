@@ -64,10 +64,10 @@ EDROOMprioNormal
  
 [Version Grafico Actor Componente]
 0
-14.0625
-51.9507
-34.5703
-67.3511
+20.3125
+38.193
+40.8203
+53.5934
 CCHK_FDIRMng
 [Version Actor Componente]
 2
@@ -81,10 +81,10 @@ EDROOMprioNormal
  
 [Version Grafico Actor Componente]
 0
-67.5781
-50.5134
-89.6484
-66.7352
+58.9844
+38.6037
+81.0547
+54.8255
 CCBKGTCExec
 [Version Actor Componente]
 2
@@ -98,10 +98,10 @@ EDROOMprioNormal
  
 [Version Grafico Actor Componente]
 0
-40.625
-47.8439
-58.2031
+40.4297
 70.4312
+58.0078
+93.0185
 CCDroneMng
 [FinActoresComponente]
 [Uniones]

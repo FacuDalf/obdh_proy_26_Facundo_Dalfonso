@@ -153,7 +153,7 @@ Ready
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-179 146 143 315
+142 160 143 315
 [FinObjetoGrafico]
 Reboot
 FReboot();
@@ -166,7 +166,7 @@ FReboot();
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-509 96 90 60
+421 73 90 60
 [FinObjetoGrafico]
 ValidTC
 ;
@@ -190,14 +190,14 @@ NewRxTC
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-235 594 35 35
+189 594 35 35
 [FinObjetoGrafico]
 HandleTC
 0
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-536 317 35 35
+551 366 35 35
 [FinObjetoGrafico]
 NewRxTC
 0
@@ -220,7 +220,7 @@ FMngTCAcceptation();
 [GraficoRama]
 [Version GraficoRama]
 0
-269 611 485 613 0
+223 611 485 613 0
 [FinGraficoRama]
 NotAccepted
 true
@@ -237,12 +237,12 @@ FMngTCRejection();
 [GraficoRama]
 [Version GraficoRama]
 0
-235 611 179 420 3
+189 611 142 434 3
 [FinGraficoRama]
 HandleTC
 0
 [Ramas]
-4
+5
 [Version Ramas]
 5
 ToReboot
@@ -260,7 +260,7 @@ FExecRebootTC();
 [GraficoRama]
 [Version GraficoRama]
 0
-553 317 550 156 3
+568 366 462 133 3
 [FinGraficoRama]
 ExecPrioTC
 true
@@ -277,16 +277,16 @@ FExecPrioTC();
 [GraficoRama]
 [Version GraficoRama]
 0
-536 334 322 159 3
+551 383 285 173 3
 [FinGraficoRama]
 FwdHK_FDIRTC
 GFwdToHK_FDIR()
 Ready
 DSubEst
 ;
+
  
- 
- 
+
 ;
 FFwdHK_FDIRTC();
 ;
@@ -294,16 +294,16 @@ FFwdHK_FDIRTC();
 [GraficoRama]
 [Version GraficoRama]
 0
-538 344 322 255 3
+553 393 285 269 3
 [FinGraficoRama]
 FwdBKGTC
 GFwdBKGTC()
 Ready
 DSubEst
 ;
+
  
- 
- 
+
 ;
 FFwdBKGTC();
 ;
@@ -311,7 +311,24 @@ FFwdBKGTC();
 [GraficoRama]
 [Version GraficoRama]
 0
-545 351 322 332 3
+560 400 285 346 3
+[FinGraficoRama]
+FwdDroneTC
+GFwdDroneTC()()
+Ready
+DSubEst
+;
+
+ 
+
+;
+;
+;
+;
+[GraficoRama]
+[Version GraficoRama]
+0
+568 400 285 424 2
 [FinGraficoRama]
 [Transiciones]
 4
@@ -338,7 +355,7 @@ true
 [GraficoTransicion]
 [Version GraficoTransicion]
 0
-119 119 179 184 0
+119 119 142 198 0
 [FinGraficoTransicion]
 NewRxTC
 Ready
@@ -361,7 +378,7 @@ FGetTC();
 [GraficoTransicion]
 [Version GraficoTransicion]
 0
-252 461 252 594 2
+215 475 206 594 2
 [FinGraficoTransicion]
 HandleTC
 ValidTC
@@ -384,7 +401,7 @@ FTCExecCtrl();
 [GraficoTransicion]
 [Version GraficoTransicion]
 0
-560 590 553 351 3
+560 590 568 400 1
 [FinGraficoTransicion]
 NewEvAction
 Ready
@@ -407,7 +424,7 @@ FGetEvAction();
 [GraficoTransicion]
 [Version GraficoTransicion]
 0
-322 451 495 590 0
+285 465 495 590 0
 [FinGraficoTransicion]
 [VariablesConstantes]
 3
@@ -433,7 +450,7 @@ CDTCExecCtrl
 Variable
 0
 [Metodos]
-15
+17
 [Version Metodos]
 21
 BasicAction
@@ -638,6 +655,26 @@ GToReboot()
  
 1
 return VTCExecCtrl.IsRebootTC();
+Guard
+GFwdDroneTC()
+0
+0
+0
+0
+1
+
+1
+return VTCExecCtrl.IsDroneTC();
+BasicAction
+FFwdDroneTC()
+0
+0
+0
+0
+1
+
+1
+DroneCtrl.send(SDroneTC, pSDroneTC_Data,. . . );
 [MaquinasSubEstados]
 1
 Ready
@@ -661,7 +698,7 @@ StanBy
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-421 331 90 60
+564 633 90 60
 [FinObjetoGrafico]
 [PuntosEleccion]
 0
@@ -692,7 +729,7 @@ F();
 [GraficoTransicion]
 [Version GraficoTransicion]
 0
-50 130 421 352 0
+50 130 564 654 0
 [FinGraficoTransicion]
 [VariablesConstantes]
 0
