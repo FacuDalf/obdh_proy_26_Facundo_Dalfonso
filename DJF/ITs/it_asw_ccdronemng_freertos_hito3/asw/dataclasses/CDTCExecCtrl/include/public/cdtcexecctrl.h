@@ -2,7 +2,7 @@
 #define FCDTCExecCtrlH
 
 
-//TODO 11 Part 1 Add ExecCtrlDroneTC as a new type of TC in the enum TTCExecCtrl
+//DONE 11 Part 1 Add ExecCtrlDroneTC as a new type of TC in the enum TTCExecCtrl
 enum TTCExecCtrl {
 	ExecCtrlPrioTC, ExecCtrlReboot, ExecCtrlHK_FDIRTC, ExecCtrlBKGTC, ExecCtrlDroneTC
 };
@@ -31,7 +31,6 @@ class CDTCExecCtrl{
 	 * \return true if it is a priority telecommand
 	 *
 	 */
-
 	bool IsPrioTC(){return (ExecCtrlPrioTC==mExecCtrl);}
 
 	/**
@@ -51,7 +50,7 @@ class CDTCExecCtrl{
 	 */
 	bool IsBKGTC() {return (ExecCtrlBKGTC==mExecCtrl);};
 
-	//TODO 11 Part 2 Define the codeo of IsDroneTC() to TTCExecCtrl
+	//DONE 11 Part 2 Define the code of IsDroneTC() to TTCExecCtrl
 
 	/**
 	 * \brief Check if is a Drone telecommand
@@ -59,10 +58,10 @@ class CDTCExecCtrl{
 	 * \return true if it is a Drone telecommand
 	 *
 	 */
-	bool IsDroneTC() {  };
+	bool IsDroneTC() {return (ExecCtrlDroneTC==mExecCtrl);};
 	
 };
 
-//TODO 11 Part 3 Copy this file in the EDROOM Model Data Class CDTCExecCtrl
+//DONE 11 Part 3 Copy this file in the EDROOM Model Data Class CDTCExecCtrl
 
 #endif

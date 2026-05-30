@@ -37,11 +37,18 @@ void pus_service129_exec_TC_129_1(tc_handler_t *ptc_handler) {
 
 	float FP_x, FP_y, FP_z;
 
-	// TODO 14 Part1 TC -> FP_x use tc_handler_get_float_appdata_field
+	//DONE 14 Part1 TC -> FP_x use tc_handler_get_float_appdata_field
+	error = tc_handler_get_float_appdata_field(ptc_handler, 0, &FP_x);
 
-	// TODO 14 Part2  -> FP_y use tc_handler_get_float_appdata_field
+	//DONE 14 Part2  -> FP_y use tc_handler_get_float_appdata_field
+	if (!error) {
+		error = tc_handler_get_float_appdata_field(ptc_handler, 1, &FP_y);
+	}
 
-	// TODO 14 Part3  TC -> FP_z use tc_handler_get_float_appdata_field
+	//DONE 14 Part3  TC -> FP_z use tc_handler_get_float_appdata_field
+	if (!error) {
+		error = tc_handler_get_float_appdata_field(ptc_handler, 2, &FP_z);
+	}
 
 	if (error) {
 
@@ -78,11 +85,18 @@ void pus_service129_exec_TC_129_2(tc_handler_t *ptc_handler) {
 	float Ki;
 	float Kd;
 
-	// TODO 17 Part1 TC -> Kp use tc_handler_get_float_appdata_field
+	//DONE 17 Part1 TC -> Kp use tc_handler_get_float_appdata_field
+	error = tc_handler_get_float_appdata_field(ptc_handler, 0, &Kp);
 
-	// TODO 17 Part1 TC -> Ki use tc_handler_get_float_appdata_field
+	//DONE 17 Part1 TC -> Ki use tc_handler_get_float_appdata_field
+	if (!error) {
+		error = tc_handler_get_float_appdata_field(ptc_handler, 1, &Ki);
+	}
 
-	// TODO 17 Part1 TC -> Kd use tc_handler_get_float_appdata_field
+	//DONE 17 Part1 TC -> Kd use tc_handler_get_float_appdata_field
+	if (!error) {
+		error = tc_handler_get_float_appdata_field(ptc_handler, 2, &Kd);
+	}
 
 	if (error) {
 
