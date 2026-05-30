@@ -104,7 +104,7 @@ void pus_service12_exec_TC_12_2(tc_handler_t *ptc_handler) {
 	uint8_t N;
 	uint16_t PMONID;
 
-	//TODO Get N & PMONID FIELD FROM TC
+	//DONE Get N & PMONID FIELD FROM TC
 	error = tc_handler_get_uint8_appdata_field(ptc_handler, &N);
 	error += tc_handler_get_uint16_appdata_field(ptc_handler, &PMONID);
 
@@ -136,22 +136,21 @@ void pus_service12_exec_TC_12_2(tc_handler_t *ptc_handler) {
 
 			} else {
 
-				//TODO Report TM[1,4] PMONID Undefined
-			    pus_service1_tx_TM_1_4_PMON_undefined(ptc_handler, PMONID);
+				//DONE Report TM[1,4] PMONID Undefined
+				pus_service1_tx_TM_1_4_PMON_undefined(ptc_handler, PMONID);
 
 			}
 
 		} else {
 
-			//TODO Report TM[1,4] PMONID Invalid
+			//DONE Report TM[1,4] PMONID Invalid
 			pus_service1_tx_TM_1_4_PMONID_invalid(ptc_handler, PMONID);
-			}
 		}
 	}
 
 	//free memory
 	tc_handler_free_memory(ptc_handler);
-
+}
 
 void pus_service12_exec_TC_12_5(tc_handler_t *ptc_handler) {
 
@@ -161,29 +160,29 @@ void pus_service12_exec_TC_12_5(tc_handler_t *ptc_handler) {
 	uint16_t PMONID;
 	param_monitoring_config_t mon_config;
 
-// TC -> N
+	// TC -> N
 	error = tc_handler_get_uint8_appdata_field(ptc_handler, &N);
 
-// TC -> PMONID
+	// TC -> PMONID
 	error += tc_handler_get_uint16_appdata_field(ptc_handler, &PMONID);
 
-// TC -> PID
+	// TC -> PID
 	error += tc_handler_get_uint16_appdata_field(ptc_handler, &mon_config.PID);
 
-// collect_interval
+	// collect_interval
 	error += tc_handler_get_uint8_appdata_field(ptc_handler,
 			&mon_config.interval);
 
-// repetition
+	// repetition
 	error += tc_handler_get_uint8_appdata_field(ptc_handler,
 			&mon_config.repetition);
 
-// type
+	// type
 	uint8_t aux;
 	error += tc_handler_get_uint8_appdata_field(ptc_handler, &aux);
 	mon_config.type = aux;
 
-// Handle error
+	// Handle error
 	if (error) {
 		// error in pack length
 		pus_service1_tx_TM_1_4_short_pack_length(ptc_handler);
@@ -266,11 +265,10 @@ void pus_service12_exec_TC_12_6(tc_handler_t *ptc_handler) {
 	uint8_t N;
 	uint16_t PMONID;
 
-
-// TC -> N
+	// TC -> N
 	error = tc_handler_get_uint8_appdata_field(ptc_handler, &N);
 
-// TC -> PMONID
+	// TC -> PMONID
 	error += tc_handler_get_uint16_appdata_field(ptc_handler, &PMONID);
 
 	// Handle error
@@ -306,5 +304,6 @@ void pus_service12_exec_TC_12_6(tc_handler_t *ptc_handler) {
 
 	}
 
-}
+	tc_handler_free_memory(ptc_handler);
 
+}

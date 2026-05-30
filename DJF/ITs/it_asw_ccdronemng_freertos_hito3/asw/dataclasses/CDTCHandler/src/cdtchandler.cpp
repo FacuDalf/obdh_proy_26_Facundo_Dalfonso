@@ -48,9 +48,9 @@ void CDTCHandler::MngTCAcceptation() {
 
 }
 
-//TODO 12 Part 1 TC[129,1], TC[129,2], TC[129,3] & TC[129,4] must be accepted
+//DONE 12 Part 1 TC[129,1], TC[129,2], TC[129,3] & TC[129,4] must be accepted
 
-//TODO 12 Part 2 Complete ExecCtrl
+//DONE 12 Part 2 Complete ExecCtrl
 
 CDTCExecCtrl CDTCHandler::GetExecCtrl() {
 
@@ -77,6 +77,9 @@ CDTCExecCtrl CDTCHandler::GetExecCtrl() {
 		execCtrl.mExecCtrl = ExecCtrlBKGTC;
 		break;
 
+	case (129):
+		execCtrl.mExecCtrl = ExecCtrlDroneTC;
+		break;
 
 	default:
 
@@ -88,7 +91,7 @@ CDTCExecCtrl CDTCHandler::GetExecCtrl() {
 	return execCtrl;
 }
 //**************************************************************************
-//TODO 13 Complete Exec_Type_TC according to defined ExecCtrl
+//DONE 13 Complete Exec_Type_TC according to defined ExecCtrl
 //**************************************************************************
 
 void CDTCHandler::ExecPrioTC() {
@@ -102,6 +105,10 @@ void CDTCHandler::ExecPrioTC() {
 		uint8_t type = mTCHandler.tc_df_header.type;
 
 		switch (type) {
+
+		case (2):
+			pus_service2_exec_tc(&mTCHandler);
+			break;
 
 		case (17):
 			pus_service17_exec_tc(&mTCHandler);
@@ -226,7 +233,9 @@ void CDTCHandler::ExecDroneTC() {
 
 		switch (type) {
 
-
+		case (129):
+			pus_service129_exec_tc(&mTCHandler);
+			break;
 
 		default:
 			//No defined code for this TC. Design error
@@ -239,4 +248,3 @@ void CDTCHandler::ExecDroneTC() {
 	}
 
 }
-

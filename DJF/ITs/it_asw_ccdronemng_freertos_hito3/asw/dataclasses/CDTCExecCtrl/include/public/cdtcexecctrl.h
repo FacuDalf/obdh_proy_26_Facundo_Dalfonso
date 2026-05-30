@@ -23,14 +23,14 @@ class CDTCExecCtrl{
 	 * \return true if it is a reboot telecommand
 	 *
 	 */
-		bool IsDroneTC() { return (ExecCtrlDroneTC == mExecCtrl); }
+	bool IsRebootTC(){return (ExecCtrlReboot==mExecCtrl);}
+
 	/**
 	 * \brief Check if it is a priority telecommand
 	 *
 	 * \return true if it is a priority telecommand
 	 *
 	 */
-
 	bool IsPrioTC(){return (ExecCtrlPrioTC==mExecCtrl);}
 
 	/**
@@ -50,7 +50,7 @@ class CDTCExecCtrl{
 	 */
 	bool IsBKGTC() {return (ExecCtrlBKGTC==mExecCtrl);};
 
-	// 11 Part 2 Define the codeo of IsDroneTC() to TTCExecCtrl
+	//DONE 11 Part 2 Define the code of IsDroneTC() to TTCExecCtrl
 
 	/**
 	 * \brief Check if is a Drone telecommand
@@ -58,10 +58,10 @@ class CDTCExecCtrl{
 	 * \return true if it is a Drone telecommand
 	 *
 	 */
-	bool IsDroneTC() {  };
+	bool IsDroneTC() {return (ExecCtrlDroneTC==mExecCtrl);};
 	
 };
 
-//TODO 11 Part 3 Copy this file in the EDROOM Model Data Class CDTCExecCtrl
+//DONE 11 Part 3 Copy this file in the EDROOM Model Data Class CDTCExecCtrl
 
 #endif
