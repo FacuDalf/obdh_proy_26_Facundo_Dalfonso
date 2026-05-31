@@ -2,18 +2,22 @@
 #define FCDTCExecCtrlH
 
 enum TTCExecCtrl {
-	ExecCtrlPrioTC, ExecCtrlReboot, ExecCtrlHK_FDIRTC, ExecCtrlBKGTC, ExecCtrlDroneTC
+	ExecCtrlPrioTC,
+	ExecCtrlReboot,
+	ExecCtrlHK_FDIRTC,
+	ExecCtrlBKGTC,
+	ExecCtrlDroneTC
 };
 
 class CDTCExecCtrl{
 	
 	friend class CDTCHandler;
 
-	protected:
+protected:
 	
-		enum TTCExecCtrl mExecCtrl;
+	enum TTCExecCtrl mExecCtrl;
 
-	public:
+public:
 
 	/**
 	 * \brief Check if it is a reboot telecommand
@@ -29,7 +33,6 @@ class CDTCExecCtrl{
 	 * \return true if it is a priority telecommand
 	 *
 	 */
-
 	bool IsPrioTC(){return (ExecCtrlPrioTC==mExecCtrl);}
 
 	/**
@@ -40,14 +43,13 @@ class CDTCExecCtrl{
 	 */
 	bool IsHK_FDIRTC(){return (ExecCtrlHK_FDIRTC==mExecCtrl);}
 
-
 	/**
 	 * \brief Check if is a Background telecommand
 	 *
 	 * \return true if it is a Background telecommand
 	 *
 	 */
-	bool IsBKGTC() {return (ExecCtrlBKGTC==mExecCtrl);};
+	bool IsBKGTC(){return (ExecCtrlBKGTC==mExecCtrl);}
 
 	/**
 	 * \brief Check if is a Drone telecommand
@@ -55,7 +57,8 @@ class CDTCExecCtrl{
 	 * \return true if it is a Drone telecommand
 	 *
 	 */
-	bool IsDroneTC() {return (ExecCtrlDroneTC==mExecCtrl);};
+	bool IsDroneTC(){return (ExecCtrlDroneTC==mExecCtrl);}
 	
 };
+
 #endif
