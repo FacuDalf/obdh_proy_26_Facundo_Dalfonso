@@ -314,13 +314,13 @@ FFwdBKGTC();
 560 400 285 346 3
 [FinGraficoRama]
 FwdDroneTC
-GFwdDroneTC()()
+GFwdDroneTC()
 Ready
 DSubEst
 ;
+
  
- 
- 
+
 ;
 ;
 ;
@@ -653,8 +653,22 @@ GFwdDroneTC()
 0
 1
  
-1
-return VTCExecCtrl.IsDroneTC();
+5
+CDTCHandler * pSDroneTC_Data = EDROOMPoolCDTCHandler.AllocData();
+ 
+
+*pSDroneTC_Data = CDTCHandler * pSDroneTC_Data = EDROOMPoolCDTCHandler.AllocData();
+
+
+
+ 
+*pSDroneTC_Data = VTCExecCtrl;
+ 
+
+
+
+
+DroneCtrl.send(SDroneTC, pSDroneTC_Data, &EDROOMPoolCDTCHandler);
 Guard
 GFwdToHK_FDIR()
 0

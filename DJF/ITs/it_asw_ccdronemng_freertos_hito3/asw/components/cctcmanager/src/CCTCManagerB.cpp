@@ -254,7 +254,19 @@ bool	CCTCManager::EDROOM_CTX_Top_0::GFwdDroneTC()
 
 {
 
-return VTCExecCtrl.IsDroneTC();
+CDTCHandler * pSDroneTC_Data = EDROOMPoolCDTCHandler.AllocData();
+ 
+
+*pSDroneTC_Data = CDTCHandler * pSDroneTC_Data = EDROOMPoolCDTCHandler.AllocData();
+
+
+ 
+*pSDroneTC_Data = VTCExecCtrl;
+ 
+
+
+
+DroneCtrl.send(SDroneTC, pSDroneTC_Data, &EDROOMPoolCDTCHandler);
 
 }
 
@@ -550,7 +562,7 @@ void CCTCManager::EDROOM_SUB_Top_0::EDROOMBehaviour()
 					edroomNextState = Ready;
 				 } 
 				//Evaluate Branch FwdDroneTC
-				else if( GFwdDroneTC()() )
+				else if( GFwdDroneTC() )
 				{
 
 					//Branch taken is HandleTC_FwdDroneTC
