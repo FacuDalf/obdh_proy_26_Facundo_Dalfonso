@@ -344,11 +344,6 @@ public:
 		/**
 		 * \brief  
 		 */
-		void	FFwdDroneTC();
-
-		/**
-		 * \brief  
-		 */
 		void	FFwdHK_FDIRTC();
 
 		/**
@@ -410,6 +405,11 @@ public:
 		 * \brief  
 		 */
 		bool	GToReboot();
+
+		/**
+		 * \brief 
+		 */
+		void	F();
 
 	};
 

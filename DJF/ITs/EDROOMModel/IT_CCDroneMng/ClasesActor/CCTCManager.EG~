@@ -492,16 +492,6 @@ BKGExecCtrl
 SBKGTC
 CDTCHandler
 EDROOMprioNormal
-BasicAction
-FFwdDroneTC()
-0
-0
-0
-0
-1
- 
-1
-DroneCtrl.send(SDroneTC, pSDroneTC_Data,. . . );
 SendMsg
 FFwdHK_FDIRTC()
 0
@@ -653,22 +643,8 @@ GFwdDroneTC()
 0
 1
  
-5
-CDTCHandler * pSDroneTC_Data = EDROOMPoolCDTCHandler.AllocData();
- 
-
-*pSDroneTC_Data = CDTCHandler * pSDroneTC_Data = EDROOMPoolCDTCHandler.AllocData();
-
-
-
- 
-*pSDroneTC_Data = VTCExecCtrl;
- 
-
-
-
-
-DroneCtrl.send(SDroneTC, pSDroneTC_Data, &EDROOMPoolCDTCHandler);
+1
+return VTCExecCtrl.IsDroneTC();
 Guard
 GFwdToHK_FDIR()
 0
@@ -689,6 +665,23 @@ GToReboot()
  
 1
 return VTCExecCtrl.IsRebootTC();
+SendMsg
+F()
+0
+0
+0
+0
+1
+
+2
+
+*pSDroneTC_Data = VCurrentTC;	
+[ServiceRequest]
+send
+DroneMngCtrl
+SDroneTC
+CDTCHandler
+EDROOMprioNormal
 [MaquinasSubEstados]
 1
 Ready

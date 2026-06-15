@@ -111,16 +111,6 @@ void	CCTCManager::EDROOM_CTX_Top_0::FFwdBKGTC()
 
 
 
-void	CCTCManager::EDROOM_CTX_Top_0::FFwdDroneTC()
-
-{
-
-DroneCtrl.send(SDroneTC, pSDroneTC_Data,. . . );
-
-}
-
-
-
 void	CCTCManager::EDROOM_CTX_Top_0::FFwdHK_FDIRTC()
 
 {
@@ -254,19 +244,7 @@ bool	CCTCManager::EDROOM_CTX_Top_0::GFwdDroneTC()
 
 {
 
-CDTCHandler * pSDroneTC_Data = EDROOMPoolCDTCHandler.AllocData();
- 
-
-*pSDroneTC_Data = CDTCHandler * pSDroneTC_Data = EDROOMPoolCDTCHandler.AllocData();
-
-
- 
-*pSDroneTC_Data = VTCExecCtrl;
- 
-
-
-
-DroneCtrl.send(SDroneTC, pSDroneTC_Data, &EDROOMPoolCDTCHandler);
+return VTCExecCtrl.IsDroneTC();
 
 }
 
@@ -288,6 +266,19 @@ bool	CCTCManager::EDROOM_CTX_Top_0::GToReboot()
 
 return VTCExecCtrl.IsRebootTC();
 
+}
+
+
+
+void	CCTCManager::EDROOM_CTX_Top_0::F()
+
+{
+   //Allocate data from pool
+  CDTCHandler * pSDroneTC_Data = EDROOMPoolCDTCHandler.AllocData();
+
+*pSDroneTC_Data = VCurrentTC;	
+   //Send message 
+   DroneMngCtrl.send(SDroneTC,pSDroneTC_Data,&EDROOMPoolCDTCHandler); 
 }
 
 
@@ -778,6 +769,8 @@ TEDROOMTransId CCTCManager::EDROOM_SUB_Ready_1::Arrival(
 		case (EDROOM_CTX_Top_0::Init):
 			edroomCurrentTrans.localId= Transicion0;
 			edroomNextState = StanBy;
+		//Invoke Synchronous Message 
+		F();
 			break;
 		case (EDROOM_CTX_Top_0::EDROOMMemoryTrans):
 			//Memory Entry added
