@@ -283,6 +283,18 @@ void	CCTCManager::EDROOM_CTX_Top_0::F()
 
 
 
+void	CCTCManager::EDROOM_CTX_Top_0::FFwdDroneTC()
+
+{
+   //Allocate data from pool
+  CDTCHandler * pSDroneTC_Data = EDROOMPoolCDTCHandler.AllocData();
+	*pSDroneTC_Data = VCurrentTC;	
+   //Send message 
+   DroneMngCtrl.send(SDroneTC,pSDroneTC_Data,&EDROOMPoolCDTCHandler); 
+}
+
+
+
 // ***********************************************************************
 
 // class EDROOM_CTX_Ready_1
@@ -555,6 +567,8 @@ void CCTCManager::EDROOM_SUB_Top_0::EDROOMBehaviour()
 				//Evaluate Branch FwdDroneTC
 				else if( GFwdDroneTC() )
 				{
+					//Send Asynchronous Message 
+					FFwdDroneTC();
 
 					//Branch taken is HandleTC_FwdDroneTC
 					edroomCurrentTrans.localId =

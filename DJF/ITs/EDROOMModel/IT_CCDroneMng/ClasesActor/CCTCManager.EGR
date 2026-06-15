@@ -322,7 +322,7 @@ DSubEst
  
 
 ;
-;
+FFwdDroneTC();
 ;
 ;
 [GraficoRama]
@@ -450,7 +450,7 @@ CDTCExecCtrl
 Variable
 0
 [Metodos]
-17
+18
 [Version Metodos]
 21
 BasicAction
@@ -676,6 +676,22 @@ F()
 2
 
 *pSDroneTC_Data = VCurrentTC;	
+[ServiceRequest]
+send
+DroneMngCtrl
+SDroneTC
+CDTCHandler
+EDROOMprioNormal
+SendMsg
+FFwdDroneTC()
+0
+0
+0
+0
+1
+
+1
+	*pSDroneTC_Data = VCurrentTC;	
 [ServiceRequest]
 send
 DroneMngCtrl
