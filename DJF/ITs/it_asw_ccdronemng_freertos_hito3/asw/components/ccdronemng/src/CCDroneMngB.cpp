@@ -64,13 +64,7 @@ void	CCDroneMng::EDROOM_CTX_Top_0::FDroneSelfTest()
 
 {
 
- 
- 
 pus_service129_drone_selftest();
- 
-//comentario de comprobacion
- 
- 
 
 }
 
@@ -81,7 +75,6 @@ void	CCDroneMng::EDROOM_CTX_Top_0::FExecDroneTC()
 {
    //Handle Msg->data
   CDTCHandler & varSDroneTC = *(CDTCHandler *)Msg->data;
-	
 varSDroneTC.ExecDroneTC();
 
 }
@@ -103,11 +96,24 @@ void	CCDroneMng::EDROOM_CTX_Top_0::FGetConfig()
 {
    //Handle Msg->data
   CDDroneConfig & varSDroneSetUp = *(CDDroneConfig *)Msg->data;
- 
- 
- 
 pus_service129_setup(varSDroneSetUp);
 
+}
+
+
+
+void	CCDroneMng::EDROOM_CTX_Top_0::FInitFlightPlan()
+
+{
+   //Define absolute time
+  Pr_Time time;
+time.GetTime();
+time += Pr_Time(0, 100000);
+VNextCtrl = time;
+ 
+pus_service129_init_flight_plan();
+   //Program absolute timer 
+   DroneTimer.InformAt( time ); 
 }
 
 
@@ -140,7 +146,7 @@ void	CCDroneMng::EDROOM_CTX_Top_0::FToReady()
 
 {
 
- pus_service129_drone_ready();
+pus_service129_drone_ready();
 
 }
 
@@ -162,22 +168,6 @@ bool	CCDroneMng::EDROOM_CTX_Top_0::GFlightPlanDone()
 
 return pus_service129_flight_plan_done();
 
-}
-
-
-
-void	CCDroneMng::EDROOM_CTX_Top_0::FInitFlightPlan()
-
-{
-   //Define absolute time
-  Pr_Time time;
-time.GetTime();
-time += Pr_Time(0, 100000);
-VNextCtrl = time;
- 
-pus_service129_init_flight_plan();
-   //Program absolute timer 
-   DroneTimer.InformAt( time ); 
 }
 
 

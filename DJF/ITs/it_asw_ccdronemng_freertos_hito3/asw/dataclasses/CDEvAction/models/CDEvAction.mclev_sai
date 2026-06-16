@@ -1,4 +1,4 @@
-package es.uah.aut.srg.edroom.mclev.data_sai.cdevaction;
+package es.uah.aut.srg.edroom.mclev.data_sai.CDEvAction;
 
 inport es.uah.aut.srg.micobs.langs;
 

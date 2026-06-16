@@ -276,6 +276,11 @@ public:
 		/**
 		 * \brief  
 		 */
+		void	FInitFlightPlan();
+
+		/**
+		 * \brief  
+		 */
 		void	FProgNextCtrl();
 
 		/**
@@ -297,11 +302,6 @@ public:
 		 * \brief  
 		 */
 		bool	GFlightPlanDone();
-
-		/**
-		 * \brief 
-		 */
-		void	FInitFlightPlan();
 
 	};
 
