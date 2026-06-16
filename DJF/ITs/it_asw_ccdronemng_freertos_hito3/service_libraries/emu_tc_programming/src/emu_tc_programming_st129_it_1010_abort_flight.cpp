@@ -33,10 +33,10 @@
 #include <public/emu_gss_v1.h>
 
 
-//DONE 19 Comment IT_UAH_DRONE_EXEC_PLAN_1000 and Execute the Test IT_UAH_DRONE_ABORT_FIGHT_1010
+//TODO 19 Comment IT_UAH_DRONE_EXEC_PLAN_1000 and Execute the Test IT_UAH_DRONE_ABORT_FIGHT_1010
 //This test uses the TC[129,2] and TC[129,4]
 
-#define IT_UAH_DRONE_ABORT_FIGHT_1010
+//#define IT_UAH_DRONE_ABORT_FIGHT_1010
 
 
 #ifdef IT_UAH_DRONE_ABORT_FIGHT_1010
@@ -60,3 +60,6 @@ EmuGSS_TCProgram129_4 prog_IT_1010_step_3(IT_1010_TIME_step3,
 
 
 #endif
+
+
+

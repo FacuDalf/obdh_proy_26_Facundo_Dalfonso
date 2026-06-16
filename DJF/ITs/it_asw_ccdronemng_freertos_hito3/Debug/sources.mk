@@ -58,6 +58,7 @@ service_libraries/emu_tc_programming/src \
 service_libraries/pus_services/pus_service01/src \
 service_libraries/pus_services/pus_service02/src \
 service_libraries/pus_services/pus_service03/src \
+service_libraries/pus_services/pus_service04/src \
 service_libraries/pus_services/pus_service05/src \
 service_libraries/pus_services/pus_service12/src \
 service_libraries/pus_services/pus_service129/src \

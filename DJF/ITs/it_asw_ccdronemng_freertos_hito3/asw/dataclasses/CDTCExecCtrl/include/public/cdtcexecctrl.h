@@ -2,8 +2,9 @@
 #define FCDTCExecCtrlH
 
 enum TTCExecCtrl {
-	ExecCtrlPrioTC, ExecCtrlReboot, ExecCtrlHK_FDIRTC, ExecCtrlBKGTC
+	ExecCtrlPrioTC, ExecCtrlReboot, ExecCtrlHK_FDIRTC, ExecCtrlBKGTC,ExecCtrlDroneTC
 };
+
 
 class CDTCExecCtrl{
 	
@@ -31,6 +32,8 @@ class CDTCExecCtrl{
 	 */
 	//TODO 
 	bool IsPrioTC(){return (ExecCtrlPrioTC==mExecCtrl);}
+
+	bool IsDroneTC(){return (ExecCtrlDroneTC==mExecCtrl);}
 
 	/**
 	 * \brief Check if is a HK_FDIR telecommand

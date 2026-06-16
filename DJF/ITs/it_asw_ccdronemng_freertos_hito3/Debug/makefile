@@ -19,6 +19,7 @@ RM := rm -rf
 -include service_libraries/pus_services/pus_service129/src/subdir.mk
 -include service_libraries/pus_services/pus_service12/src/subdir.mk
 -include service_libraries/pus_services/pus_service05/src/subdir.mk
+-include service_libraries/pus_services/pus_service04/src/subdir.mk
 -include service_libraries/pus_services/pus_service03/src/subdir.mk
 -include service_libraries/pus_services/pus_service02/src/subdir.mk
 -include service_libraries/pus_services/pus_service01/src/subdir.mk
@@ -84,7 +85,7 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := it_asw_ccdronemng_freertos_hito3
+BUILD_ARTIFACT_NAME := it_asw_ccdronemng_freertos_hito3_viejo
 BUILD_ARTIFACT_EXTENSION :=
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
@@ -95,19 +96,19 @@ BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ART
 all: main-build
 
 # Main-build Target
-main-build: it_asw_ccdronemng_freertos_hito3
+main-build: it_asw_ccdronemng_freertos_hito3_viejo
 
 # Tool invocations
-it_asw_ccdronemng_freertos_hito3: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
+it_asw_ccdronemng_freertos_hito3_viejo: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++  -o "it_asw_ccdronemng_freertos_hito3" $(OBJS) $(USER_OBJS) $(LIBS) -lpthread
+	g++  -o "it_asw_ccdronemng_freertos_hito3_viejo" $(OBJS) $(USER_OBJS) $(LIBS) -lpthread
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) it_asw_ccdronemng_freertos_hito3
+	-$(RM) it_asw_ccdronemng_freertos_hito3_viejo
 	-@echo ' '
 
 .PHONY: all clean dependents main-build
