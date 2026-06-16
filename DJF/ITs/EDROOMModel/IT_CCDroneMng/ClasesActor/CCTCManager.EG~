@@ -5,8 +5,8 @@
 0
 0
 [Modificado]
-1
-1
+0
+0
 0
 [Estructura]
 [Version Estructura]
@@ -210,9 +210,9 @@ GAcceptTC()
 ValidTC
 DSubEst
 FMngTCAcceptation();
+
  
- 
- 
+
 ;
 ;
 ;
@@ -227,9 +227,9 @@ true
 Ready
 DSubEst
 FMngTCRejection();
+
  
- 
- 
+
 ;
 ;
 ;
@@ -267,9 +267,9 @@ true
 Ready
 DSubEst
 FExecPrioTC();
+
  
- 
- 
+
 ;
 ;
 ;
@@ -341,8 +341,8 @@ Ready
 DSubEst
 FInit();
 [Trigger]
-*
-SEvAction
+EDROOMsl
+EDROOMStart
 true
  
  
@@ -387,9 +387,9 @@ HandleTC
 DPEleccion
 FTCExecCtrl();
 [Trigger]
- 
- 
- 
+
+
+
  
  
  
@@ -738,8 +738,8 @@ StanBy
 DSubEst
 ;
 [Trigger]
-*
-SEvAction
+EDROOMsl
+EDROOMStart
 true
  
  

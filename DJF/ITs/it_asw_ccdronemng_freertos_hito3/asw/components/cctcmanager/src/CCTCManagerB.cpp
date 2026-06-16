@@ -76,6 +76,19 @@ bool CCTCManager::EDROOM_CTX_Top_0::EDROOMSearchContextTrans(
 
 	// User-defined Functions   ****************************
 
+void	CCTCManager::EDROOM_CTX_Top_0::F()
+
+{
+   //Allocate data from pool
+  CDTCHandler * pSDroneTC_Data = EDROOMPoolCDTCHandler.AllocData();
+ 
+*pSDroneTC_Data = VCurrentTC;	
+   //Send message 
+   DroneMngCtrl.send(SDroneTC,pSDroneTC_Data,&EDROOMPoolCDTCHandler); 
+}
+
+
+
 void	CCTCManager::EDROOM_CTX_Top_0::FExecPrioTC()
 
 {
@@ -107,6 +120,18 @@ void	CCTCManager::EDROOM_CTX_Top_0::FFwdBKGTC()
 	*pSBKGTC_Data=VCurrentTC;
    //Send message 
    BKGExecCtrl.send(SBKGTC,pSBKGTC_Data,&EDROOMPoolCDTCHandler); 
+}
+
+
+
+void	CCTCManager::EDROOM_CTX_Top_0::FFwdDroneTC()
+
+{
+   //Allocate data from pool
+  CDTCHandler * pSDroneTC_Data = EDROOMPoolCDTCHandler.AllocData();
+	*pSDroneTC_Data = VCurrentTC;	
+   //Send message 
+   DroneMngCtrl.send(SDroneTC,pSDroneTC_Data,&EDROOMPoolCDTCHandler); 
 }
 
 
@@ -266,31 +291,6 @@ bool	CCTCManager::EDROOM_CTX_Top_0::GToReboot()
 
 return VTCExecCtrl.IsRebootTC();
 
-}
-
-
-
-void	CCTCManager::EDROOM_CTX_Top_0::F()
-
-{
-   //Allocate data from pool
-  CDTCHandler * pSDroneTC_Data = EDROOMPoolCDTCHandler.AllocData();
-
-*pSDroneTC_Data = VCurrentTC;	
-   //Send message 
-   DroneMngCtrl.send(SDroneTC,pSDroneTC_Data,&EDROOMPoolCDTCHandler); 
-}
-
-
-
-void	CCTCManager::EDROOM_CTX_Top_0::FFwdDroneTC()
-
-{
-   //Allocate data from pool
-  CDTCHandler * pSDroneTC_Data = EDROOMPoolCDTCHandler.AllocData();
-	*pSDroneTC_Data = VCurrentTC;	
-   //Send message 
-   DroneMngCtrl.send(SDroneTC,pSDroneTC_Data,&EDROOMPoolCDTCHandler); 
 }
 
 

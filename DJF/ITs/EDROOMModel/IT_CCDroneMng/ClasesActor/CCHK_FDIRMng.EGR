@@ -142,9 +142,9 @@ GPendingEvAction()
 Ready
 DSubEst
 ;
+
  
- 
- 
+
 ;
 FFwdEvAction();
 ;
@@ -159,9 +159,9 @@ true
 Ready
 DSubEst
 ;
+
  
- 
- 
+
 ;
 ;
 ;
@@ -213,7 +213,7 @@ true
  
 FExecHK_FDIR_TC();
 ;
- 
+
 0
 ;
 [GraficoTransicion]
@@ -265,19 +265,20 @@ FDoHK_FDIR()
 0
 1
  
-7
+8
  
 VNextTimeout+= Pr_Time(1,0); // Add X sec + Y microsec 
 time=VNextTimeout; 
  
 pus_services_update_params();
+pus_service4_update_all_stats();
 pus_service3_do_HK();
 pus_services_do_FDIR();
 [ServiceRequest]
 InformAt
 HK_FDIRTimer
 EDROOMSignalTimeout
-CDTCHandler
+CDEvAction
 EDROOMprioNormal
 MsgDataHandler
 FExecHK_FDIR_TC()

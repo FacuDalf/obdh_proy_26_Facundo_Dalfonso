@@ -329,6 +329,11 @@ public:
 		/**
 		 * \brief  
 		 */
+		void	F();
+
+		/**
+		 * \brief  
+		 */
 		void	FExecPrioTC();
 
 		/**
@@ -340,6 +345,11 @@ public:
 		 * \brief  
 		 */
 		void	FFwdBKGTC();
+
+		/**
+		 * \brief  
+		 */
+		void	FFwdDroneTC();
 
 		/**
 		 * \brief  
@@ -405,16 +415,6 @@ public:
 		 * \brief  
 		 */
 		bool	GToReboot();
-
-		/**
-		 * \brief 
-		 */
-		void	F();
-
-		/**
-		 * \brief 
-		 */
-		void	FFwdDroneTC();
 
 	};
 
