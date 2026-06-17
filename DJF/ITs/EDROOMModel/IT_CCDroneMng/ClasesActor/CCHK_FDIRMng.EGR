@@ -142,9 +142,9 @@ GPendingEvAction()
 Ready
 DSubEst
 ;
-
  
-
+ 
+ 
 ;
 FFwdEvAction();
 ;
@@ -159,9 +159,9 @@ true
 Ready
 DSubEst
 ;
-
  
-
+ 
+ 
 ;
 ;
 ;
@@ -213,7 +213,7 @@ true
  
 FExecHK_FDIR_TC();
 ;
-
+ 
 0
 ;
 [GraficoTransicion]

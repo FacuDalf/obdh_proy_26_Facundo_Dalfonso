@@ -64,7 +64,13 @@ void	CCDroneMng::EDROOM_CTX_Top_0::FDroneSelfTest()
 
 {
 
+ 
+ 
 pus_service129_drone_selftest();
+ 
+//comentario de comprobacion
+ 
+ 
 
 }
 
@@ -75,6 +81,7 @@ void	CCDroneMng::EDROOM_CTX_Top_0::FExecDroneTC()
 {
    //Handle Msg->data
   CDTCHandler & varSDroneTC = *(CDTCHandler *)Msg->data;
+	
 varSDroneTC.ExecDroneTC();
 
 }
@@ -96,6 +103,9 @@ void	CCDroneMng::EDROOM_CTX_Top_0::FGetConfig()
 {
    //Handle Msg->data
   CDDroneConfig & varSDroneSetUp = *(CDDroneConfig *)Msg->data;
+ 
+ 
+ 
 pus_service129_setup(varSDroneSetUp);
 
 }
@@ -146,7 +156,7 @@ void	CCDroneMng::EDROOM_CTX_Top_0::FToReady()
 
 {
 
-pus_service129_drone_ready();
+ pus_service129_drone_ready();
 
 }
 

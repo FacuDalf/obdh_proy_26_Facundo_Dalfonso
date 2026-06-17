@@ -784,7 +784,7 @@ TEDROOMTransId CCTCManager::EDROOM_SUB_Ready_1::Arrival(
 			edroomCurrentTrans.localId= Transicion0;
 			edroomNextState = StanBy;
 		//Invoke Synchronous Message 
-		F();
+		FInvokeDroneSetUp();
 			break;
 		case (EDROOM_CTX_Top_0::EDROOMMemoryTrans):
 			//Memory Entry added

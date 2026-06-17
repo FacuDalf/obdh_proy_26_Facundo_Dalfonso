@@ -99,6 +99,8 @@ void	CCHK_FDIRMng::EDROOM_CTX_Top_0::FFwdEvAction()
 {
    //Allocate data from pool
   CDEvAction * pSEvAction_Data = EDROOMPoolCDEvAction.AllocData();
+	
+	
 pSEvAction_Data->ExtractEvActionFromQueue();
    //Send message 
    HK_FDIRCtrl.send(SEvAction,pSEvAction_Data,&EDROOMPoolCDEvAction); 
@@ -128,6 +130,7 @@ bool	CCHK_FDIRMng::EDROOM_CTX_Top_0::GPendingEvAction()
 {
 
 return (pus_service19_pending_ev_actions());
+ 
 
 }
 

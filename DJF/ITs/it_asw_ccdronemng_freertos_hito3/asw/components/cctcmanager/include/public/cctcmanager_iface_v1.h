@@ -329,6 +329,11 @@ public:
 		/**
 		 * \brief  
 		 */
+		void	F();
+
+		/**
+		 * \brief  
+		 */
 		void	FExecPrioTC();
 
 		/**
@@ -426,10 +431,10 @@ public:
 	protected:
 
 		//! State Identifiers
-		enum TEDROOMStateID{StandBy};
+		enum TEDROOMStateID{StanBy};
 
 		//!Transition Identifiers
-		enum TEDROOMTransitionID{ Init,
+		enum TEDROOMTransitionID{Transicion0,
 			EDROOMMemoryTrans };
 
 
@@ -501,13 +506,13 @@ public:
 
 		// ***********************************************************************
 
-		// Leaf SubState StandBy
+		// Leaf SubState StanBy
 
 		// ***********************************************************************
 
 
 
-		TEDROOMTransId EDROOMStandByArrival();
+		TEDROOMTransId EDROOMStanByArrival();
 
 	};
 
