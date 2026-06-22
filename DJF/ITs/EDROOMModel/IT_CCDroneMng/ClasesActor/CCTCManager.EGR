@@ -250,9 +250,9 @@ GToReboot()
 Reboot
 DSubEst
 FExecRebootTC();
+
  
- 
- 
+
 ;
 ;
 ;
@@ -341,8 +341,8 @@ Ready
 DSubEst
 FInit();
 [Trigger]
-*
-SEvAction
+EDROOMsl
+EDROOMStart
 true
  
  
@@ -738,8 +738,8 @@ StanBy
 DSubEst
 ;
 [Trigger]
-*
-SEvAction
+EDROOMsl
+EDROOMStart
 true
  
  

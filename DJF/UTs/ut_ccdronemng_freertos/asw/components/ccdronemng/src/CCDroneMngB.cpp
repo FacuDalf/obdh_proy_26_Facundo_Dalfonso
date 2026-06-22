@@ -115,15 +115,14 @@ pus_service129_setup(varSDroneSetUp);
 void	CCDroneMng::EDROOM_CTX_Top_0::FInitFlightPlan()
 
 {
-   //Define absolute time
-  Pr_Time time;
+
+Pr_Time time;
 time.GetTime();
-time += Pr_Time(0, 100000);
-VNextCtrl = time;
- 
+time += Pr_Time(0,100000);
+VNextCtrl=time;
 pus_service129_init_flight_plan();
-   //Program absolute timer 
-   DroneTimer.InformAt( time ); 
+DroneTimer.InformAt(time);
+
 }
 
 
@@ -131,12 +130,12 @@ pus_service129_init_flight_plan();
 void	CCDroneMng::EDROOM_CTX_Top_0::FProgNextCtrl()
 
 {
-   //Define absolute time
-  Pr_Time time;
-VNextCtrl += Pr_Time(0, 100000);
-time = VNextCtrl;
-   //Program absolute timer 
-   DroneTimer.InformAt( time ); 
+
+Pr_Time time;
+VNextCtrl += Pr_Time(0,100000);
+time=VNextCtrl;
+DroneTimer.InformAt(time);
+
 }
 
 
@@ -297,13 +296,6 @@ void CCDroneMng::EDROOM_SUB_Top_0::EDROOMBehaviour()
 					//Next State is FlightPlan
 					edroomNextState = FlightPlan;
 				 } 
-				break;
-			//Next Transition is ExecTCInFlight
-			case (ExecTCInFlight):
-				//Msg->Data Handling 
-				FExecDroneTC();
-				//Next State is FlightPlan
-				edroomNextState = FlightPlan;
 				break;
 		}
 
@@ -515,19 +507,6 @@ TEDROOMTransId CCDroneMng::EDROOM_SUB_Top_0::EDROOMFlightPlanArrival()
 					//Next transition is  CtrlAlgorithm
 					edroomCurrentTrans.localId = CtrlAlgorithm;
 					edroomCurrentTrans.distanceToContext = 0 ;
-					edroomValidMsg=true;
-				 }
-
-				break;
-
-			case (SDroneTC): 
-
-				 if (*Msg->GetPInterface() == DroneMngCtrl)
-				{
-
-					//Next transition is  ExecTCInFlight
-					edroomCurrentTrans.localId= ExecTCInFlight;
-					edroomCurrentTrans.distanceToContext = 0;
 					edroomValidMsg=true;
 				 }
 
