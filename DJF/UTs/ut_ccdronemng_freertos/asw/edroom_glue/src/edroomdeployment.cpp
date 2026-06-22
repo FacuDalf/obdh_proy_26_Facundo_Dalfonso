@@ -8,20 +8,16 @@
 //*****************************************************************************
 //Main Wait
  
-void MainWait(UAH_ASW   &comp1,
-					CCTCManager   &comp2,
-					CCHK_FDIRMng   &comp3,
-					CCBKGTCExec   &comp4,
-					CCDroneMng   &comp5){
+void MainWait(UT_CCDroneMng   &comp1,
+					CCDroneMngTester   &comp2,
+					CCDroneMng   &comp3){
  
 	Pr_Time waitTime(3, 0);
  
 #ifdef _EDROOM_SYSTEM_CLOSE
 	while(!comp1.EDROOMIsComponentFinished()
 				||!comp2.EDROOMIsComponentFinished()
-				||!comp3.EDROOMIsComponentFinished()
-				||!comp4.EDROOMIsComponentFinished()
-				||!comp5.EDROOMIsComponentFinished())
+				||!comp3.EDROOMIsComponentFinished())
 #else
 	while(true)
 #endif
@@ -36,30 +32,22 @@ void MainWait(UAH_ASW   &comp1,
 void CEDROOMSystemMemory::SetMemory(){
  
 	comp1Memory.SetMemory(10, comp1Messages, &comp1MessagesMarks[0]
-					,13,comp1QueueNodes, &comp1QueueNodesMarks[0]);
+					,15,comp1QueueNodes, &comp1QueueNodesMarks[0]);
 	comp2Memory.SetMemory(10, comp2Messages, &comp2MessagesMarks[0]
-					,11,comp2QueueNodes, &comp2QueueNodesMarks[0]);
+					,14,comp2QueueNodes, &comp2QueueNodesMarks[0]);
 	comp3Memory.SetMemory(10, comp3Messages, &comp3MessagesMarks[0]
 					,13,comp3QueueNodes, &comp3QueueNodesMarks[0]);
-	comp4Memory.SetMemory(10, comp4Messages, &comp4MessagesMarks[0]
-					,10,comp4QueueNodes, &comp4QueueNodesMarks[0]);
-	comp5Memory.SetMemory(10, comp5Messages, &comp5MessagesMarks[0]
-					,13,comp5QueueNodes, &comp5QueueNodesMarks[0]);
 }
  
 //*****************************************************************************
 //SetComponents
  
-void CEDROOMSystemCommSAP::SetComponents(UAH_ASW   *p_comp1,
-										CCTCManager   *p_comp2,
-										CCHK_FDIRMng   *p_comp3,
-										CCBKGTCExec   *p_comp4,
-										CCDroneMng   *p_comp5){
+void CEDROOMSystemCommSAP::SetComponents(UT_CCDroneMng   *p_comp1,
+										CCDroneMngTester   *p_comp2,
+										CCDroneMng   *p_comp3){
 	mp_comp1=p_comp1;
 	mp_comp2=p_comp2;
 	mp_comp3=p_comp3;
-	mp_comp4=p_comp4;
-	mp_comp5=p_comp5;
 }
  
  
@@ -70,15 +58,13 @@ void CEDROOMSystemCommSAP::SetComponents(UAH_ASW   *p_comp1,
 //*****************************************************************************
  
  
-TEDROOMSignal CEDROOMSystemCommSAP::C2TCManager_PDroneMngCtrl__C5DroneMng_PDroneMngCtrl(TEDROOMSignal signalOut){
+TEDROOMSignal CEDROOMSystemCommSAP::C2DroneMngTester_PTesterCtrl__C1MainActor_PTesterCtrl(TEDROOMSignal signalOut){
  
 	TEDROOMSignal signalIn;
  
 	switch(signalOut){
  
-		case( CCTCManager::SDroneSetUp):	 signalIn=CCDroneMng::SDroneSetUp; break;
- 
-		case( CCTCManager::SDroneTC):	 signalIn=CCDroneMng::SDroneTC; break;
+		case( CCDroneMngTester::SStartFlightPlan):	 signalIn=UT_CCDroneMng::SStartFlightPlan; break;
  
 		default: signalIn=(TEDROOMSignal)(-1); break;
  
@@ -87,37 +73,7 @@ TEDROOMSignal CEDROOMSystemCommSAP::C2TCManager_PDroneMngCtrl__C5DroneMng_PDrone
  
 }
  
-TEDROOMSignal CEDROOMSystemCommSAP::C5DroneMng_PDroneMngCtrl__C2TCManager_PDroneMngCtrl(TEDROOMSignal signalOut){
- 
-	TEDROOMSignal signalIn;
- 
-	switch(signalOut){
- 
-		case( CCDroneMng::SDroneReady):	 signalIn=CCTCManager::SDroneReady; break;
- 
-		default: signalIn=(TEDROOMSignal)(-1); break;
- 
-	}
-	return signalIn;
- 
-}
- 
-TEDROOMSignal CEDROOMSystemCommSAP::C2TCManager_PBKGExecCtrl__C4BKGTCExec_PBKGExecCtrl(TEDROOMSignal signalOut){
- 
-	TEDROOMSignal signalIn;
- 
-	switch(signalOut){
- 
-		case( CCTCManager::SBKGTC):	 signalIn=CCBKGTCExec::SBKGTC; break;
- 
-		default: signalIn=(TEDROOMSignal)(-1); break;
- 
-	}
-	return signalIn;
- 
-}
- 
-TEDROOMSignal CEDROOMSystemCommSAP::C4BKGTCExec_PBKGExecCtrl__C2TCManager_PBKGExecCtrl(TEDROOMSignal signalOut){
+TEDROOMSignal CEDROOMSystemCommSAP::C1MainActor_PTesterCtrl__C2DroneMngTester_PTesterCtrl(TEDROOMSignal signalOut){
  
 	TEDROOMSignal signalIn;
  
@@ -130,13 +86,13 @@ TEDROOMSignal CEDROOMSystemCommSAP::C4BKGTCExec_PBKGExecCtrl__C2TCManager_PBKGEx
  
 }
  
-TEDROOMSignal CEDROOMSystemCommSAP::C3HK_FDIRMng_PHK_FDIRCtrl__C2TCManager_PHK_FDIRCtrl(TEDROOMSignal signalOut){
+TEDROOMSignal CEDROOMSystemCommSAP::C3DroneMng_PDroneCtrl__C2DroneMngTester_PDroneCtrl(TEDROOMSignal signalOut){
  
 	TEDROOMSignal signalIn;
  
 	switch(signalOut){
  
-		case( CCHK_FDIRMng::SEvAction):	 signalIn=CCTCManager::SEvAction; break;
+		case( CCDroneMng::SDroneReady):	 signalIn=CCDroneMngTester::SDroneReady; break;
  
 		default: signalIn=(TEDROOMSignal)(-1); break;
  
@@ -145,13 +101,15 @@ TEDROOMSignal CEDROOMSystemCommSAP::C3HK_FDIRMng_PHK_FDIRCtrl__C2TCManager_PHK_F
  
 }
  
-TEDROOMSignal CEDROOMSystemCommSAP::C2TCManager_PHK_FDIRCtrl__C3HK_FDIRMng_PHK_FDIRCtrl(TEDROOMSignal signalOut){
+TEDROOMSignal CEDROOMSystemCommSAP::C2DroneMngTester_PDroneCtrl__C3DroneMng_PDroneCtrl(TEDROOMSignal signalOut){
  
 	TEDROOMSignal signalIn;
  
 	switch(signalOut){
  
-		case( CCTCManager::SHK_FDIR_TC):	 signalIn=CCHK_FDIRMng::SHK_FDIR_TC; break;
+		case( CCDroneMngTester::SDroneSetUp):	 signalIn=CCDroneMng::SDroneSetUp; break;
+ 
+		case( CCDroneMngTester::SDroneTC):	 signalIn=CCDroneMng::SDroneTC; break;
  
 		default: signalIn=(TEDROOMSignal)(-1); break;
  
@@ -168,24 +126,18 @@ TEDROOMSignal CEDROOMSystemCommSAP::C2TCManager_PHK_FDIRCtrl__C3HK_FDIRMng_PHK_F
 void CEDROOMSystemCommSAP::RegisterInterfaces(){
  
 	// Register Interface for Component 1
-	m_localCommSAP.RegisterInterface(1, mp_comp1->Timer, mp_comp1);
+	m_localCommSAP.RegisterInterface(1, mp_comp1->WatchDogTimer, mp_comp1);
+	m_localCommSAP.RegisterInterface(2, mp_comp1->TesterCtrl, mp_comp1);
+	m_localCommSAP.RegisterInterface(3, mp_comp1->UTTimerCtrl, mp_comp1);
  
 	// Register Interface for Component 2
-	m_localCommSAP.RegisterInterface(1, mp_comp2->DroneMngCtrl, mp_comp2);
-	m_localCommSAP.RegisterInterface(2, mp_comp2->BKGExecCtrl, mp_comp2);
-	m_localCommSAP.RegisterInterface(3, mp_comp2->RxTC, mp_comp2);
-	m_localCommSAP.RegisterInterface(4, mp_comp2->HK_FDIRCtrl, mp_comp2);
+	m_localCommSAP.RegisterInterface(1, mp_comp2->TesterCtrl, mp_comp2);
+	m_localCommSAP.RegisterInterface(2, mp_comp2->Timer, mp_comp2);
+	m_localCommSAP.RegisterInterface(3, mp_comp2->DroneCtrl, mp_comp2);
  
 	// Register Interface for Component 3
-	m_localCommSAP.RegisterInterface(1, mp_comp3->HK_FDIRCtrl, mp_comp3);
-	m_localCommSAP.RegisterInterface(2, mp_comp3->HK_FDIRTimer, mp_comp3);
- 
-	// Register Interface for Component 4
-	m_localCommSAP.RegisterInterface(1, mp_comp4->BKGExecCtrl, mp_comp4);
- 
-	// Register Interface for Component 5
-	m_localCommSAP.RegisterInterface(1, mp_comp5->DroneTimer, mp_comp5);
-	m_localCommSAP.RegisterInterface(2, mp_comp5->DroneMngCtrl, mp_comp5);
+	m_localCommSAP.RegisterInterface(1, mp_comp3->DroneTimer, mp_comp3);
+	m_localCommSAP.RegisterInterface(2, mp_comp3->DroneCtrl, mp_comp3);
  
 }
  
@@ -195,17 +147,13 @@ void CEDROOMSystemCommSAP::RegisterInterfaces(){
  
 void CEDROOMSystemCommSAP::SetLocalConnections(){
  
-	m_localCommSAP.Connect(mp_comp2->DroneMngCtrl, mp_comp5->DroneMngCtrl, connections[0], 
-					C2TCManager_PDroneMngCtrl__C5DroneMng_PDroneMngCtrl, 
-					C5DroneMng_PDroneMngCtrl__C2TCManager_PDroneMngCtrl);
+	m_localCommSAP.Connect(mp_comp2->TesterCtrl, mp_comp1->TesterCtrl, connections[0], 
+					C2DroneMngTester_PTesterCtrl__C1MainActor_PTesterCtrl, 
+					C1MainActor_PTesterCtrl__C2DroneMngTester_PTesterCtrl);
  
-	m_localCommSAP.Connect(mp_comp2->BKGExecCtrl, mp_comp4->BKGExecCtrl, connections[1], 
-					C2TCManager_PBKGExecCtrl__C4BKGTCExec_PBKGExecCtrl, 
-					C4BKGTCExec_PBKGExecCtrl__C2TCManager_PBKGExecCtrl);
- 
-	m_localCommSAP.Connect(mp_comp3->HK_FDIRCtrl, mp_comp2->HK_FDIRCtrl, connections[2], 
-					C3HK_FDIRMng_PHK_FDIRCtrl__C2TCManager_PHK_FDIRCtrl, 
-					C2TCManager_PHK_FDIRCtrl__C3HK_FDIRMng_PHK_FDIRCtrl);
+	m_localCommSAP.Connect(mp_comp3->DroneCtrl, mp_comp2->DroneCtrl, connections[1], 
+					C3DroneMng_PDroneCtrl__C2DroneMngTester_PDroneCtrl, 
+					C2DroneMngTester_PDroneCtrl__C3DroneMng_PDroneCtrl);
  
 }
  
@@ -241,23 +189,17 @@ CEDROOMSystemDeployment::CEDROOMSystemDeployment(){
 //*****************************************************************************
 ////Config
  
-void CEDROOMSystemDeployment::Config(UAH_ASW   *p_comp1,
-											CCTCManager   *p_comp2,
-											CCHK_FDIRMng   *p_comp3,
-											CCBKGTCExec   *p_comp4,
-											CCDroneMng   *p_comp5){
+void CEDROOMSystemDeployment::Config(UT_CCDroneMng   *p_comp1,
+											CCDroneMngTester   *p_comp2,
+											CCDroneMng   *p_comp3){
  
 	mp_comp1=p_comp1;
 	mp_comp2=p_comp2;
 	mp_comp3=p_comp3;
-	mp_comp4=p_comp4;
-	mp_comp5=p_comp5;
  
 	systemCommSAP.SetComponents(	p_comp1,
 									p_comp2,
-									p_comp3,
-									p_comp4,
-									p_comp5);
+									p_comp3);
  
 	systemCommSAP.RegisterInterfaces();
 	systemCommSAP.SetConnections();
@@ -271,8 +213,6 @@ void CEDROOMSystemDeployment::StartComponents(){
 	mp_comp1->EDROOMStart();
 	mp_comp2->EDROOMStart();
 	mp_comp3->EDROOMStart();
-	mp_comp4->EDROOMStart();
-	mp_comp5->EDROOMStart();
  
 }
  
@@ -295,9 +235,7 @@ StartComponents();
  
 	MainWait(*mp_comp1,
 				*mp_comp2,
-				*mp_comp3,
-				*mp_comp4,
-				*mp_comp5);
+				*mp_comp3);
  
  
 #endif
@@ -318,9 +256,7 @@ Pr_TaskRV_t CEDROOMSystemDeployment::main_task(Pr_TaskP_t){
 	systemDeployment.StartComponents();
 	MainWait(*systemDeployment.mp_comp1,
 				*systemDeployment.mp_comp2,
-				*systemDeployment.mp_comp3,
-				*systemDeployment.mp_comp4,
-				*systemDeployment.mp_comp5);
+				*systemDeployment.mp_comp3);
  
 }
 #endif
