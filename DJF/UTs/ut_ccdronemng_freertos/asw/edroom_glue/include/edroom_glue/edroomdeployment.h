@@ -12,8 +12,10 @@
 //******************************************************************************
 // include deployment edroom components
  
-#include <public/ut_ccdronemng_iface_v1.h>
-#include <public/ccdronemngtester_iface_v1.h>
+#include <public/uah_asw_iface_v1.h>
+#include <public/cctcmanager_iface_v1.h>
+#include <public/cchk_fdirmng_iface_v1.h>
+#include <public/ccbkgtcexec_iface_v1.h>
 #include <public/ccdronemng_iface_v1.h>
 // ***********************************************************************
 // class CEDROOMSystemMemory
@@ -24,14 +26,14 @@ class CEDROOMSystemMemory{
 	//!Messages Memory of component comp1
 	CEDROOMMessage	comp1Messages[10];
 	bool	comp1MessagesMarks[10];
-	CEDROOMQueue::CQueueNode	comp1QueueNodes[15];
-	bool	comp1QueueNodesMarks[15];
+	CEDROOMQueue::CQueueNode	comp1QueueNodes[13];
+	bool	comp1QueueNodesMarks[13];
  
 	//!Messages Memory of component comp2
 	CEDROOMMessage	comp2Messages[10];
 	bool	comp2MessagesMarks[10];
-	CEDROOMQueue::CQueueNode	comp2QueueNodes[14];
-	bool	comp2QueueNodesMarks[14];
+	CEDROOMQueue::CQueueNode	comp2QueueNodes[11];
+	bool	comp2QueueNodesMarks[11];
  
 	//!Messages Memory of component comp3
 	CEDROOMMessage	comp3Messages[10];
@@ -39,11 +41,25 @@ class CEDROOMSystemMemory{
 	CEDROOMQueue::CQueueNode	comp3QueueNodes[13];
 	bool	comp3QueueNodesMarks[13];
  
+	//!Messages Memory of component comp4
+	CEDROOMMessage	comp4Messages[10];
+	bool	comp4MessagesMarks[10];
+	CEDROOMQueue::CQueueNode	comp4QueueNodes[10];
+	bool	comp4QueueNodesMarks[10];
+ 
+	//!Messages Memory of component comp5
+	CEDROOMMessage	comp5Messages[10];
+	bool	comp5MessagesMarks[10];
+	CEDROOMQueue::CQueueNode	comp5QueueNodes[13];
+	bool	comp5QueueNodesMarks[13];
+ 
 	public:
  
-	UT_CCDroneMng::CEDROOMMemory comp1Memory;
-	CCDroneMngTester::CEDROOMMemory comp2Memory;
-	CCDroneMng::CEDROOMMemory comp3Memory;
+	UAH_ASW::CEDROOMMemory comp1Memory;
+	CCTCManager::CEDROOMMemory comp2Memory;
+	CCHK_FDIRMng::CEDROOMMemory comp3Memory;
+	CCBKGTCExec::CEDROOMMemory comp4Memory;
+	CCDroneMng::CEDROOMMemory comp5Memory;
  
 //!Set Memory
 	void SetMemory();
@@ -59,29 +75,38 @@ class CEDROOMSystemCommSAP{
  
 //!Conections
  
-	CEDROOMLocalConnection connections[2];
+	CEDROOMLocalConnection connections[3];
  
-	UT_CCDroneMng   * mp_comp1;
-	CCDroneMngTester   * mp_comp2;
-	CCDroneMng   * mp_comp3;
+	UAH_ASW   * mp_comp1;
+	CCTCManager   * mp_comp2;
+	CCHK_FDIRMng   * mp_comp3;
+	CCBKGTCExec   * mp_comp4;
+	CCDroneMng   * mp_comp5;
  
  
 //!Set Components
  
-	void SetComponents(UT_CCDroneMng   *p_comp1,
-							CCDroneMngTester   *p_comp2,
-							CCDroneMng   *p_comp3);
+	void SetComponents(UAH_ASW   *p_comp1,
+							CCTCManager   *p_comp2,
+							CCHK_FDIRMng   *p_comp3,
+							CCBKGTCExec   *p_comp4,
+							CCDroneMng   *p_comp5);
  
  
 //Signal Conversion
  
-	static TEDROOMSignal C2DroneMngTester_PTesterCtrl__C1MainActor_PTesterCtrl(TEDROOMSignal signal);
-	static TEDROOMSignal C1MainActor_PTesterCtrl__C2DroneMngTester_PTesterCtrl(TEDROOMSignal signal);
+	static TEDROOMSignal C2TCManager_PDroneMngCtrl__C5DroneMng_PDroneMngCtrl(TEDROOMSignal signal);
+	static TEDROOMSignal C5DroneMng_PDroneMngCtrl__C2TCManager_PDroneMngCtrl(TEDROOMSignal signal);
  
 //Signal Conversion
  
-	static TEDROOMSignal C3DroneMng_PDroneCtrl__C2DroneMngTester_PDroneCtrl(TEDROOMSignal signal);
-	static TEDROOMSignal C2DroneMngTester_PDroneCtrl__C3DroneMng_PDroneCtrl(TEDROOMSignal signal);
+	static TEDROOMSignal C2TCManager_PBKGExecCtrl__C4BKGTCExec_PBKGExecCtrl(TEDROOMSignal signal);
+	static TEDROOMSignal C4BKGTCExec_PBKGExecCtrl__C2TCManager_PBKGExecCtrl(TEDROOMSignal signal);
+ 
+//Signal Conversion
+ 
+	static TEDROOMSignal C3HK_FDIRMng_PHK_FDIRCtrl__C2TCManager_PHK_FDIRCtrl(TEDROOMSignal signal);
+	static TEDROOMSignal C2TCManager_PHK_FDIRCtrl__C3HK_FDIRMng_PHK_FDIRCtrl(TEDROOMSignal signal);
  
  
 //!Register Interfaces
@@ -112,18 +137,22 @@ static Pr_TaskRV_t main_task(Pr_TaskP_t);
 	CEDROOMSystemMemory   systemMemory;
 	CEDROOMSystemCommSAP  systemCommSAP;
  
-	UT_CCDroneMng   * mp_comp1;
-	CCDroneMngTester   * mp_comp2;
-	CCDroneMng   * mp_comp3;
+	UAH_ASW   * mp_comp1;
+	CCTCManager   * mp_comp2;
+	CCHK_FDIRMng   * mp_comp3;
+	CCBKGTCExec   * mp_comp4;
+	CCDroneMng   * mp_comp5;
  
 	public:
  
 	CEDROOMSystemDeployment();
  
 //!Deployment Configuration
-	void Config(UT_CCDroneMng   *p_comp1,
-					CCDroneMngTester   *p_comp2,
-					CCDroneMng   *p_comp3);
+	void Config(UAH_ASW   *p_comp1,
+					CCTCManager   *p_comp2,
+					CCHK_FDIRMng   *p_comp3,
+					CCBKGTCExec   *p_comp4,
+					CCDroneMng   *p_comp5);
  
 //!Deployment Start
 	void Start();
@@ -132,9 +161,11 @@ static Pr_TaskRV_t main_task(Pr_TaskP_t);
 	void StartComponents();
 //!Config Components
  
-	UT_CCDroneMng::CEDROOMMemory 		* GetComp1Memory(){return &systemMemory.comp1Memory;}
-	CCDroneMngTester::CEDROOMMemory 		* GetComp2Memory(){return &systemMemory.comp2Memory;}
-	CCDroneMng::CEDROOMMemory 		* GetComp3Memory(){return &systemMemory.comp3Memory;}
+	UAH_ASW::CEDROOMMemory 		* GetComp1Memory(){return &systemMemory.comp1Memory;}
+	CCTCManager::CEDROOMMemory 		* GetComp2Memory(){return &systemMemory.comp2Memory;}
+	CCHK_FDIRMng::CEDROOMMemory 		* GetComp3Memory(){return &systemMemory.comp3Memory;}
+	CCBKGTCExec::CEDROOMMemory 		* GetComp4Memory(){return &systemMemory.comp4Memory;}
+	CCDroneMng::CEDROOMMemory 		* GetComp5Memory(){return &systemMemory.comp5Memory;}
  
 };
 #endif
