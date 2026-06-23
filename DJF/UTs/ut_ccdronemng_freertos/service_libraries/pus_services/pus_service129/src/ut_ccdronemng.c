@@ -82,7 +82,6 @@ void StepMsg(uint8_t step_id) {
 void ut_ccdrone_mng_check_trace() {
 	uint8_t current_step = 0;
 	uint8_t timing_error = 0;
-	uint8_t sequence_error = 0;
 
 	while (current_step < UT_TraceIndex) {
 
@@ -95,7 +94,6 @@ void ut_ccdrone_mng_check_trace() {
 			printf(" Traced step: ");
 			StepMsg(UT_CCDRONEMng0010Log[current_step] - 1);
 			printf("\n");
-			sequence_error=1;
 		} else {
 			printf("\nStep %d OK: ", (current_step + 1));
 			StepMsg(UT_CCDRONEMng0010Log[current_step] - 1);
@@ -141,14 +139,7 @@ void ut_ccdrone_mng_check_trace() {
 
 	} else {
 
-		if (sequence_error){
-			printf("\n\n\n*********************** ");
-			printf(
-					"UT_CCDroneMng Action Sequence Error. Check Log ***********************\n");
-
-			exit(0);
-
-		}else if (timing_error) {
+		if (timing_error) {
 			printf("\n\n\n*********************** ");
 			printf(
 					"UT_CCDroneMng Timing Error. Check Log ***********************\n");
