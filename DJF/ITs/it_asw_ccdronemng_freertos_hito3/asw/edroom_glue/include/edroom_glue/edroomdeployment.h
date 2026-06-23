@@ -95,8 +95,8 @@ class CEDROOMSystemCommSAP{
  
 //Signal Conversion
  
-	static TEDROOMSignal C2TCManager_PDroneMngCtrl__C5DroneMng_PDroneMngCtrl(TEDROOMSignal signal);
 	static TEDROOMSignal C5DroneMng_PDroneMngCtrl__C2TCManager_PDroneMngCtrl(TEDROOMSignal signal);
+	static TEDROOMSignal C2TCManager_PDroneMngCtrl__C5DroneMng_PDroneMngCtrl(TEDROOMSignal signal);
  
 //Signal Conversion
  

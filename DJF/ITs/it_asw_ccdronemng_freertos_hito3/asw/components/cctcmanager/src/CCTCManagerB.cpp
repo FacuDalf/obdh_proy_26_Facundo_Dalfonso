@@ -76,19 +76,6 @@ bool CCTCManager::EDROOM_CTX_Top_0::EDROOMSearchContextTrans(
 
 	// User-defined Functions   ****************************
 
-void	CCTCManager::EDROOM_CTX_Top_0::F()
-
-{
-   //Allocate data from pool
-  CDTCHandler * pSDroneTC_Data = EDROOMPoolCDTCHandler.AllocData();
- 
-*pSDroneTC_Data = VCurrentTC;	
-   //Send message 
-   DroneMngCtrl.send(SDroneTC,pSDroneTC_Data,&EDROOMPoolCDTCHandler); 
-}
-
-
-
 void	CCTCManager::EDROOM_CTX_Top_0::FExecPrioTC()
 
 {
@@ -129,7 +116,7 @@ void	CCTCManager::EDROOM_CTX_Top_0::FFwdDroneTC()
 {
    //Allocate data from pool
   CDTCHandler * pSDroneTC_Data = EDROOMPoolCDTCHandler.AllocData();
-	*pSDroneTC_Data = VCurrentTC;	
+*pSDroneTC_Data = VCurrentTC;	
    //Send message 
    DroneMngCtrl.send(SDroneTC,pSDroneTC_Data,&EDROOMPoolCDTCHandler); 
 }
@@ -156,12 +143,7 @@ void	CCTCManager::EDROOM_CTX_Top_0::FGetEvAction()
 {
    //Handle Msg->data
   CDEvAction & varSEvAction = *(CDEvAction *)Msg->data;
-	
-	// Data access
 VCurrentTC=varSEvAction.GetActionTCHandler();
- 
-//aaa
- 
 
 }
 
@@ -382,11 +364,10 @@ void	CCTCManager::EDROOM_CTX_Ready_1::FInvokeDroneSetUp()
 {
    //Allocate data from pool
   CDDroneConfig * pSDroneSetUp_Data = EDROOMPoolCDDroneConfig.AllocData();
-	
-	pSDroneSetUp_Data->ZMinBeforeAdvance=10;
-	pSDroneSetUp_Data->DefaultKp=0.2;
-	pSDroneSetUp_Data->DefaultKi=0.15;
-	pSDroneSetUp_Data->DefaultKd=0.05;
+pSDroneSetUp_Data->ZMinBeforeAdvance=10;
+pSDroneSetUp_Data->DefaultKp=0.2;
+pSDroneSetUp_Data->DefaultKi=0.15;
+pSDroneSetUp_Data->DefaultKd=0.05;
    //Invoke synchronous communication 
    MsgBack=DroneMngCtrl.invoke(SDroneSetUp,pSDroneSetUp_Data,
                                                      &EDROOMPoolCDDroneConfig); 
@@ -781,8 +762,8 @@ TEDROOMTransId CCTCManager::EDROOM_SUB_Ready_1::Arrival(
 			break;
 		//From entry point Init
 		case (EDROOM_CTX_Top_0::Init):
-			edroomCurrentTrans.localId= Transicion0;
-			edroomNextState = StanBy;
+			edroomCurrentTrans.localId=  Init;
+			edroomNextState = StandBy;
 		//Invoke Synchronous Message 
 		FInvokeDroneSetUp();
 			break;
@@ -802,10 +783,10 @@ TEDROOMTransId CCTCManager::EDROOM_SUB_Ready_1::Arrival(
 		switch(edroomNextState)
 		{
 
-				//Go to the state StanBy
-			case (StanBy):
-				//Arrival to state StanBy
-				edroomCurrentTrans=EDROOMStanByArrival();
+				//Go to the state StandBy
+			case (StandBy):
+				//Arrival to state StandBy
+				edroomCurrentTrans=EDROOMStandByArrival();
 				break;
 
 		}
@@ -831,13 +812,13 @@ void CCTCManager::EDROOM_SUB_Ready_1::EDROOMInit()
 
 	// ***********************************************************************
 
-	// Leaf SubState  StanBy
+	// Leaf SubState  StandBy
 
 	// ***********************************************************************
 
 
 
-TEDROOMTransId CCTCManager::EDROOM_SUB_Ready_1::EDROOMStanByArrival()
+TEDROOMTransId CCTCManager::EDROOM_SUB_Ready_1::EDROOMStandByArrival()
 {
 
 	TEDROOMTransId edroomCurrentTrans;
