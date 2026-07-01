@@ -342,13 +342,13 @@ FlightPlan
 DSubEst
 ;
 [Trigger]
- 
- 
+DroneMngCtrl
+SDroneTC
 true
  
  
  
-;
+FExecDroneTC();
 ;
 ;
 0
