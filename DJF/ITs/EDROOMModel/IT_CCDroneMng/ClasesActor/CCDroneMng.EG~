@@ -5,8 +5,8 @@
 0
 0
 [Modificado]
-0
-0
+1
+1
 0
 [Estructura]
 [Version Estructura]
@@ -240,7 +240,7 @@ FProgNextCtrl();
 462 350 539 548 0
 [FinGraficoRama]
 [Transiciones]
-4
+5
 [Version Transicion]
 5
 Init
@@ -334,6 +334,29 @@ true
 [Version GraficoTransicion]
 0
 414 548 445 367 1
+[FinGraficoTransicion]
+ExecTCInFlight
+FlightPlan
+OSubEst
+FlightPlan
+DSubEst
+;
+[Trigger]
+ 
+ 
+true
+ 
+ 
+ 
+;
+;
+;
+0
+;
+[GraficoTransicion]
+[Version GraficoTransicion]
+0
+450 622 243 622 5
 [FinGraficoTransicion]
 [VariablesConstantes]
 1
