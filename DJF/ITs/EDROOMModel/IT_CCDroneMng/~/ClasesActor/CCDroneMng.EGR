@@ -5,8 +5,8 @@
 0
 0
 [Modificado]
-1
-1
+0
+0
 0
 [Estructura]
 [Version Estructura]
@@ -29,7 +29,7 @@ DroneMngCtrl
 0
 [Version Grafico Puerto]
 0
-47
+46
 4
 CPDroneMngCtrl
 [Version Puerto]
@@ -40,8 +40,8 @@ DroneTimer
 1
 [Version Grafico Puerto]
 0
-27
-39
+54
+63
 EDROOMTimingSAP
 [FinPuertos]
 [ActoresComponente]
@@ -68,7 +68,7 @@ EDROOMTimingSAP
 [Version Modulo]
 1
 pus_services_iface
- 
+mclev Package:
 v1
  
 1
@@ -100,7 +100,7 @@ I
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-73 73 55 55
+149 61 55 55
 [FinObjetoGrafico]
 SelfTest
 ;
@@ -113,7 +113,7 @@ FDroneSelfTest();
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-185 140 90 60
+100 165 188 60
 [FinObjetoGrafico]
 Ready
 ;
@@ -126,7 +126,7 @@ Ready
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-138 290 199 82
+101 280 175 60
 [FinObjetoGrafico]
 FlightPlan
 ;
@@ -139,7 +139,7 @@ FlightPlan
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-116 518 537 77
+115 541 525 74
 [FinObjetoGrafico]
 [PuntosEleccion]
 2
@@ -150,14 +150,14 @@ ExecTC
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-192 426 35 35
+173 382 35 35
 [FinObjetoGrafico]
 CtrlAlgorithm
 0
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-522 321 35 35
+413 305 35 35
 [FinObjetoGrafico]
 ExecTC
 0
@@ -180,7 +180,7 @@ DSubEst
 [GraficoRama]
 [Version GraficoRama]
 0
-195 433 153 372 3
+173 399 101 328 3
 [FinGraficoRama]
 InitFlightPlan
 GExecFlightPlan()
@@ -197,7 +197,7 @@ FInitFlightPlan();
 [GraficoRama]
 [Version GraficoRama]
 0
-209 460 236 518 0
+190 416 195 541 0
 [FinGraficoRama]
 CtrlAlgorithm
 0
@@ -205,23 +205,6 @@ CtrlAlgorithm
 2
 [Version Ramas]
 5
-ProgNextCtrl
-true
-FlightPlan
-DSubEst
-FProgNextCtrl();
- 
- 
- 
-;
-;
-;
-;
-[GraficoRama]
-[Version GraficoRama]
-0
-539 355 653 527 0
-[FinGraficoRama]
 PlanDone
 GFlightPlanDone()
 Ready
@@ -237,7 +220,24 @@ FToReady();
 [GraficoRama]
 [Version GraficoRama]
 0
-523 330 337 327 3
+413 322 276 318 3
+[FinGraficoRama]
+ProgNextCtrl
+true
+FlightPlan
+DSubEst
+FProgNextCtrl();
+ 
+ 
+ 
+;
+;
+;
+;
+[GraficoRama]
+[Version GraficoRama]
+0
+447 322 557 541 0
 [FinGraficoRama]
 [Transiciones]
 4
@@ -264,7 +264,7 @@ true
 [GraficoTransicion]
 [Version GraficoTransicion]
 0
-122 113 195 140 0
+176 115 180 165 0
 [FinGraficoTransicion]
 ToReady
 SelfTest
@@ -287,7 +287,7 @@ FReplyDroneReady();
 [GraficoTransicion]
 [Version GraficoTransicion]
 0
-223 200 226 290 0
+179 225 179 280 2
 [FinGraficoTransicion]
 ExecTC
 Ready
@@ -310,7 +310,7 @@ FExecDroneTC();
 [GraficoTransicion]
 [Version GraficoTransicion]
 0
-214 372 209 426 2
+182 340 190 382 0
 [FinGraficoTransicion]
 CtrlAlgorithm
 FlightPlan
@@ -333,7 +333,7 @@ true
 [GraficoTransicion]
 [Version GraficoTransicion]
 0
-506 518 526 349 1
+432 541 430 339 3
 [FinGraficoTransicion]
 [VariablesConstantes]
 1
@@ -356,14 +356,8 @@ FDroneSelfTest()
 0
 1
  
-7
- 
- 
+1
 pus_service129_drone_selftest();
- 
-//comentario de comprobacion
- 
- 
 MsgDataHandler
 FExecDroneTC()
 0
@@ -372,15 +366,14 @@ FExecDroneTC()
 0
 1
  
-2
-	
+1
 varSDroneTC.ExecDroneTC();
 [ServiceRequest]
 Msg->data
 DroneMngCtrl
 SDroneTC
 CDTCHandler
-EDROOMprioNormal
+ 
 BasicAction
 FFlightCtrlAlgorithm()
 0
@@ -399,18 +392,15 @@ FGetConfig()
 0
 1
  
-4
- 
- 
- 
+1
 pus_service129_setup(varSDroneSetUp);
 [ServiceRequest]
 Msg->data
 DroneMngCtrl
 SDroneSetUp
 CDDroneConfig
-EDROOMprioNormal
-BasicAction
+ 
+Inform
 FInitFlightPlan()
 0
 0
@@ -418,14 +408,19 @@ FInitFlightPlan()
 0
 1
  
-6
-Pr_Time time;
+5
 time.GetTime();
-time += Pr_Time(0,100000);
-VNextCtrl=time;
+time += Pr_Time(0, 100000);
+VNextCtrl = time;
+ 
 pus_service129_init_flight_plan();
-DroneTimer.InformAt(time);
-BasicAction
+[ServiceRequest]
+InformAt
+DroneTimer
+EDROOMSignalTimeout
+ 
+EDROOMprioVeryHigh
+Inform
 FProgNextCtrl()
 0
 0
@@ -433,11 +428,15 @@ FProgNextCtrl()
 0
 1
  
-4
-Pr_Time time;
-VNextCtrl += Pr_Time(0,100000);
-time=VNextCtrl;
-DroneTimer.InformAt(time);
+2
+VNextCtrl += Pr_Time(0, 100000);
+time = VNextCtrl;
+[ServiceRequest]
+InformAt
+DroneTimer
+EDROOMSignalTimeout
+ 
+EDROOMprioVeryHigh
 ReplyMsg
 FReplyDroneReady()
 0
@@ -463,7 +462,7 @@ FToReady()
 1
  
 1
- pus_service129_drone_ready();
+pus_service129_drone_ready();
 Guard
 GExecFlightPlan()
 0

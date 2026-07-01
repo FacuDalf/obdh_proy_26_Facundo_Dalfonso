@@ -64,13 +64,7 @@ void	CCDroneMng::EDROOM_CTX_Top_0::FDroneSelfTest()
 
 {
 
- 
- 
 pus_service129_drone_selftest();
- 
-//comentario de comprobacion
- 
- 
 
 }
 
@@ -81,7 +75,6 @@ void	CCDroneMng::EDROOM_CTX_Top_0::FExecDroneTC()
 {
    //Handle Msg->data
   CDTCHandler & varSDroneTC = *(CDTCHandler *)Msg->data;
-	
 varSDroneTC.ExecDroneTC();
 
 }
@@ -103,9 +96,6 @@ void	CCDroneMng::EDROOM_CTX_Top_0::FGetConfig()
 {
    //Handle Msg->data
   CDDroneConfig & varSDroneSetUp = *(CDDroneConfig *)Msg->data;
- 
- 
- 
 pus_service129_setup(varSDroneSetUp);
 
 }
@@ -156,7 +146,7 @@ void	CCDroneMng::EDROOM_CTX_Top_0::FToReady()
 
 {
 
- pus_service129_drone_ready();
+pus_service129_drone_ready();
 
 }
 
@@ -297,13 +287,6 @@ void CCDroneMng::EDROOM_SUB_Top_0::EDROOMBehaviour()
 					//Next State is FlightPlan
 					edroomNextState = FlightPlan;
 				 } 
-				break;
-			//Next Transition is ExecTCInFlight
-			case (ExecTCInFlight):
-				//Msg->Data Handling 
-				FExecDroneTC();
-				//Next State is FlightPlan
-				edroomNextState = FlightPlan;
 				break;
 		}
 
@@ -515,19 +498,6 @@ TEDROOMTransId CCDroneMng::EDROOM_SUB_Top_0::EDROOMFlightPlanArrival()
 					//Next transition is  CtrlAlgorithm
 					edroomCurrentTrans.localId = CtrlAlgorithm;
 					edroomCurrentTrans.distanceToContext = 0 ;
-					edroomValidMsg=true;
-				 }
-
-				break;
-
-			case (SDroneTC): 
-
-				 if (*Msg->GetPInterface() == DroneMngCtrl)
-				{
-
-					//Next transition is  ExecTCInFlight
-					edroomCurrentTrans.localId= ExecTCInFlight;
-					edroomCurrentTrans.distanceToContext = 0;
 					edroomValidMsg=true;
 				 }
 

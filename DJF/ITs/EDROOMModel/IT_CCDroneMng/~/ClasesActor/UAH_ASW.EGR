@@ -29,8 +29,8 @@ Timer
 1
 [Version Grafico Puerto]
 0
-86
-86
+15
+81
 EDROOMTimingSAP
 [FinPuertos]
 [ActoresComponente]
@@ -47,10 +47,10 @@ EDROOMprioHigh
  
 [Version Grafico Actor Componente]
 0
-26.3672
-18.6858
-70.8984
-33.0595
+13.086
+16.4271
+88.2812
+35.1129
 CCTCManager
 [Version Actor Componente]
 2
@@ -64,10 +64,10 @@ EDROOMprioNormal
  
 [Version Grafico Actor Componente]
 0
-14.0625
-51.9507
-34.5703
-67.3511
+14.6484
+49.076
+35.1562
+64.4764
 CCHK_FDIRMng
 [Version Actor Componente]
 2
@@ -81,10 +81,10 @@ EDROOMprioNormal
  
 [Version Grafico Actor Componente]
 0
-67.5781
-50.5134
-89.6484
-66.7352
+66.2109
+49.4866
+88.2812
+65.7084
 CCBKGTCExec
 [Version Actor Componente]
 2
@@ -98,10 +98,10 @@ EDROOMprioNormal
  
 [Version Grafico Actor Componente]
 0
-40.625
-47.8439
-58.2031
-70.4312
+40.8203
+56.0575
+58.3984
+78.6448
 CCDroneMng
 [FinActoresComponente]
 [Uniones]
@@ -128,8 +128,8 @@ Union3
 1
 DroneMngCtrl
 DroneMngCtrl
-TCManager
 DroneMng
+TCManager
 [FinUniones]
 [NumTimers]
 2

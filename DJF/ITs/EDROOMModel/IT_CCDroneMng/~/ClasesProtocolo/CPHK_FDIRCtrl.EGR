@@ -4,7 +4,7 @@
 0
 0
 0
-0
+1
 1
 [Version Mensaje]
 1
@@ -14,7 +14,7 @@ SHK_FDIR_TC
 [Version Dato]
 1
 CDTCHandler
-C:\Users\facud\OneDrive\Documents\GitHub\obdh_proy_26_Facundo_Dalfonso\DJF\ITs\EDROOMModel\IT_CCDroneMng\
+C:\Users\manud\Documents\GitHub\obdh_proy_26_Manuel_Delgado\DJF\ITs\EDROOMModel\IT_ASW_CCDroneMng\
 es.uah.aut.srg.edroom.mclev.data_sai.cdtchandler
 v1
 0
@@ -27,8 +27,8 @@ SEvAction
 [Version Dato]
 1
 CDEvAction
-C:\Users\facud\OneDrive\Documents\GitHub\obdh_proy_26_Facundo_Dalfonso\DJF\ITs\EDROOMModel\IT_CCDroneMng\
-es.uah.aut.srg.edroom.mclev.data_sai.cdevaction
+C:\Users\manud\Documents\GitHub\obdh_proy_26_Manuel_Delgado\DJF\ITs\EDROOMModel\IT_ASW_CCDroneMng\
+es.uah.aut.srg.edroom.mclev.data_sai.CDEvAction
 v1
 0
 0

@@ -2,7 +2,7 @@
 #define FCDTCExecCtrlH
 
 enum TTCExecCtrl {
-	ExecCtrlPrioTC, ExecCtrlReboot, ExecCtrlHK_FDIRTC, ExecCtrlBKGTC, ExecCtrlDroneTC
+	ExecCtrlPrioTC, ExecCtrlReboot, ExecCtrlHK_FDIRTC, ExecCtrlBKGTC
 };
 
 class CDTCExecCtrl{
@@ -48,8 +48,6 @@ class CDTCExecCtrl{
 	 *
 	 */
 	bool IsBKGTC() {return (ExecCtrlBKGTC==mExecCtrl);};
-
-	bool IsDroneTC(){return (ExecCtrlDroneTC==mExecCtrl);}
 	
 	
 };

@@ -113,7 +113,7 @@ FDroneSelfTest();
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-185 140 90 60
+186 185 90 60
 [FinObjetoGrafico]
 Ready
 ;
@@ -126,7 +126,7 @@ Ready
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-138 290 199 82
+134 309 199 82
 [FinObjetoGrafico]
 FlightPlan
 ;
@@ -139,7 +139,7 @@ FlightPlan
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-116 518 537 77
+105 534 537 77
 [FinObjetoGrafico]
 [PuntosEleccion]
 2
@@ -150,14 +150,14 @@ ExecTC
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-192 426 35 35
+221 427 35 35
 [FinObjetoGrafico]
 CtrlAlgorithm
 0
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-522 321 35 35
+477 337 35 35
 [FinObjetoGrafico]
 ExecTC
 0
@@ -180,7 +180,7 @@ DSubEst
 [GraficoRama]
 [Version GraficoRama]
 0
-195 433 153 372 3
+224 434 149 391 3
 [FinGraficoRama]
 InitFlightPlan
 GExecFlightPlan()
@@ -197,7 +197,7 @@ FInitFlightPlan();
 [GraficoRama]
 [Version GraficoRama]
 0
-209 460 236 518 0
+238 461 225 534 2
 [FinGraficoRama]
 CtrlAlgorithm
 0
@@ -220,7 +220,7 @@ FProgNextCtrl();
 [GraficoRama]
 [Version GraficoRama]
 0
-539 355 653 527 0
+494 371 642 543 0
 [FinGraficoRama]
 PlanDone
 GFlightPlanDone()
@@ -237,7 +237,7 @@ FToReady();
 [GraficoRama]
 [Version GraficoRama]
 0
-523 330 337 327 3
+478 346 333 346 2
 [FinGraficoRama]
 [Transiciones]
 4
@@ -264,7 +264,7 @@ true
 [GraficoTransicion]
 [Version GraficoTransicion]
 0
-122 113 195 140 0
+122 113 196 185 0
 [FinGraficoTransicion]
 ToReady
 SelfTest
@@ -287,7 +287,7 @@ FReplyDroneReady();
 [GraficoTransicion]
 [Version GraficoTransicion]
 0
-223 200 226 290 0
+224 245 222 309 2
 [FinGraficoTransicion]
 ExecTC
 Ready
@@ -310,7 +310,7 @@ FExecDroneTC();
 [GraficoTransicion]
 [Version GraficoTransicion]
 0
-214 372 209 426 2
+210 391 238 427 0
 [FinGraficoTransicion]
 CtrlAlgorithm
 FlightPlan
@@ -333,7 +333,7 @@ true
 [GraficoTransicion]
 [Version GraficoTransicion]
 0
-506 518 526 349 1
+495 534 481 365 3
 [FinGraficoTransicion]
 [VariablesConstantes]
 1

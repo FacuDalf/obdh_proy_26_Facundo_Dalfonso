@@ -126,7 +126,7 @@ FProgNextTCExec();
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-193 184 172 69
+214 255 172 69
 [FinObjetoGrafico]
 DroneInFlightPlan
 ;
@@ -139,7 +139,7 @@ DroneInFlightPlan
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-427 341 159 93
+404 437 159 93
 [FinObjetoGrafico]
 [PuntosEleccion]
 1
@@ -150,7 +150,7 @@ SendTC
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-259 370 35 35
+209 475 35 35
 [FinObjetoGrafico]
 SendTC
 0
@@ -173,7 +173,7 @@ FProgNextTCExec();
 [GraficoRama]
 [Version GraficoRama]
 0
-259 387 209 253 3
+209 492 230 324 1
 [FinGraficoRama]
 StartFlightPlan
 true
@@ -190,7 +190,7 @@ FStartFligthPlan();
 [GraficoRama]
 [Version GraficoRama]
 0
-293 387 427 387 1
+243 492 404 483 1
 [FinGraficoRama]
 [Transiciones]
 2
@@ -217,7 +217,7 @@ FUTInvokeSetUp();
 [GraficoTransicion]
 [Version GraficoTransicion]
 0
-116 121 193 221 0
+116 121 214 292 0
 [FinGraficoTransicion]
 SendTC
 DroneReady
@@ -240,7 +240,7 @@ FSendDroneTC();
 [GraficoTransicion]
 [Version GraficoTransicion]
 0
-275 253 276 370 0
+296 324 226 475 2
 [FinGraficoTransicion]
 [VariablesConstantes]
 2

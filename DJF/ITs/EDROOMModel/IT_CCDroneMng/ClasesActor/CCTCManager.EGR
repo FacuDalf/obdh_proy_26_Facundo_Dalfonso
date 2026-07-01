@@ -29,7 +29,7 @@ HK_FDIRCtrl
 0
 [Version Grafico Puerto]
 0
-31
+10
 93
 CPHK_FDIRCtrl
 [Version Puerto]
@@ -40,8 +40,8 @@ RxTC
 1
 [Version Grafico Puerto]
 0
-51
-31
+53
+50
 CPRxTC
 [Version Puerto]
 0
@@ -51,7 +51,7 @@ BKGExecCtrl
 0
 [Version Grafico Puerto]
 0
-72
+79
 93
 CPBKGExecCtrl
 [Version Puerto]
@@ -153,7 +153,7 @@ Ready
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-142 160 143 315
+210 154 143 315
 [FinObjetoGrafico]
 Reboot
 FReboot();
@@ -166,7 +166,7 @@ FReboot();
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-421 73 90 60
+534 92 90 60
 [FinObjetoGrafico]
 ValidTC
 ;
@@ -179,7 +179,7 @@ ValidTC
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-485 590 143 43
+491 592 143 43
 [FinObjetoGrafico]
 [PuntosEleccion]
 2
@@ -190,14 +190,14 @@ NewRxTC
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-189 594 35 35
+260 594 35 35
 [FinObjetoGrafico]
 HandleTC
 0
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-551 366 35 35
+540 370 35 35
 [FinObjetoGrafico]
 NewRxTC
 0
@@ -220,7 +220,7 @@ FMngTCAcceptation();
 [GraficoRama]
 [Version GraficoRama]
 0
-223 611 485 613 0
+294 611 491 615 0
 [FinGraficoRama]
 NotAccepted
 true
@@ -237,7 +237,7 @@ FMngTCRejection();
 [GraficoRama]
 [Version GraficoRama]
 0
-189 611 142 434 3
+260 611 210 428 3
 [FinGraficoRama]
 HandleTC
 0
@@ -260,7 +260,7 @@ FExecRebootTC();
 [GraficoRama]
 [Version GraficoRama]
 0
-568 366 462 133 3
+557 370 575 152 1
 [FinGraficoRama]
 ExecPrioTC
 true
@@ -277,7 +277,7 @@ FExecPrioTC();
 [GraficoRama]
 [Version GraficoRama]
 0
-551 383 285 173 3
+540 387 353 167 3
 [FinGraficoRama]
 FwdHK_FDIRTC
 GFwdToHK_FDIR()
@@ -294,7 +294,7 @@ FFwdHK_FDIRTC();
 [GraficoRama]
 [Version GraficoRama]
 0
-553 393 285 269 3
+542 397 353 263 3
 [FinGraficoRama]
 FwdBKGTC
 GFwdBKGTC()
@@ -311,7 +311,7 @@ FFwdBKGTC();
 [GraficoRama]
 [Version GraficoRama]
 0
-560 400 285 346 3
+549 404 353 340 3
 [FinGraficoRama]
 FwdDroneTC
 GFwdDroneTC()
@@ -328,7 +328,7 @@ FFwdDroneTC();
 [GraficoRama]
 [Version GraficoRama]
 0
-568 400 285 424 2
+557 404 353 406 2
 [FinGraficoRama]
 [Transiciones]
 4
@@ -341,8 +341,8 @@ Ready
 DSubEst
 FInit();
 [Trigger]
-EDROOMsl
-EDROOMStart
+*
+SEvAction
 true
  
  
@@ -355,7 +355,7 @@ true
 [GraficoTransicion]
 [Version GraficoTransicion]
 0
-119 119 142 198 0
+119 119 210 192 0
 [FinGraficoTransicion]
 NewRxTC
 Ready
@@ -378,7 +378,7 @@ FGetTC();
 [GraficoTransicion]
 [Version GraficoTransicion]
 0
-215 475 206 594 2
+283 469 277 594 2
 [FinGraficoTransicion]
 HandleTC
 ValidTC
@@ -401,7 +401,7 @@ FTCExecCtrl();
 [GraficoTransicion]
 [Version GraficoTransicion]
 0
-560 590 568 400 1
+566 592 557 404 3
 [FinGraficoTransicion]
 NewEvAction
 Ready
@@ -424,7 +424,7 @@ FGetEvAction();
 [GraficoTransicion]
 [Version GraficoTransicion]
 0
-285 465 495 590 0
+353 454 508 592 0
 [FinGraficoTransicion]
 [VariablesConstantes]
 3
@@ -450,26 +450,9 @@ CDTCExecCtrl
 Variable
 0
 [Metodos]
-18
+17
 [Version Metodos]
 21
-SendMsg
-F()
-0
-0
-0
-0
-1
- 
-2
- 
-*pSDroneTC_Data = VCurrentTC;	
-[ServiceRequest]
-send
-DroneMngCtrl
-SDroneTC
-CDTCHandler
-EDROOMprioNormal
 BasicAction
 FExecPrioTC()
 0
@@ -518,7 +501,7 @@ FFwdDroneTC()
 1
  
 1
-	*pSDroneTC_Data = VCurrentTC;	
+*pSDroneTC_Data = VCurrentTC;	
 [ServiceRequest]
 send
 DroneMngCtrl
@@ -552,13 +535,8 @@ FGetEvAction()
 0
 1
  
-6
-	
-	// Data access
+1
 VCurrentTC=varSEvAction.GetActionTCHandler();
- 
-//aaa
- 
 [ServiceRequest]
 Msg->data
 HK_FDIRCtrl
@@ -585,7 +563,7 @@ Msg->data
 RxTC
 EDROOMIRQsignal
 CDTCMemDescriptor
-EDROOMprioNormal
+ 
 BasicAction
 FInit()
 0
@@ -710,7 +688,7 @@ Top
 1
 [Version SubEstados]
 3
-StanBy
+StandBy
 ;
 ;
 ;
@@ -721,7 +699,7 @@ StanBy
 [ObjetoGrafico]
 [Version Objeto Grafico]
 0
-564 633 90 60
+209 198 90 60
 [FinObjetoGrafico]
 [PuntosEleccion]
 0
@@ -731,15 +709,15 @@ StanBy
 1
 [Version Transicion]
 5
-Transicion0
+ Init
 Init
 OPEntrada
-StanBy
+StandBy
 DSubEst
 ;
 [Trigger]
-EDROOMsl
-EDROOMStart
+*
+SEvAction
 true
  
  
@@ -752,7 +730,7 @@ FInvokeDroneSetUp();
 [GraficoTransicion]
 [Version GraficoTransicion]
 0
-50 130 564 654 0
+50 130 209 230 0
 [FinGraficoTransicion]
 [VariablesConstantes]
 0
@@ -768,12 +746,11 @@ FInvokeDroneSetUp()
 0
 1
  
-5
-	
-	pSDroneSetUp_Data->ZMinBeforeAdvance=10;
-	pSDroneSetUp_Data->DefaultKp=0.2;
-	pSDroneSetUp_Data->DefaultKi=0.15;
-	pSDroneSetUp_Data->DefaultKd=0.05;
+4
+pSDroneSetUp_Data->ZMinBeforeAdvance=10;
+pSDroneSetUp_Data->DefaultKp=0.2;
+pSDroneSetUp_Data->DefaultKi=0.15;
+pSDroneSetUp_Data->DefaultKd=0.05;
 [ServiceRequest]
 invoke
 DroneMngCtrl

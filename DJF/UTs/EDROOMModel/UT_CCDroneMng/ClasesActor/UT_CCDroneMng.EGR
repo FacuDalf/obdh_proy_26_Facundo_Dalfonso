@@ -30,7 +30,7 @@ UTTimerCtrl
 [Version Grafico Puerto]
 0
 66
-37
+39
 EDROOMTimingSAP
 [Version Puerto]
 0
@@ -51,8 +51,8 @@ WatchDogTimer
 1
 [Version Grafico Puerto]
 0
-67
-54
+66
+55
 EDROOMTimingSAP
 [FinPuertos]
 [ActoresComponente]
@@ -69,10 +69,10 @@ EDROOMprioNormal
  
 [Version Grafico Actor Componente]
 0
-25.7813
-18.6859
-43.3594
-41.2731
+29.8828
+10.0616
+47.4609
+32.6488
 CCDroneMngTester
 [Version Actor Componente]
 2
@@ -86,10 +86,10 @@ EDROOMprioNormal
  
 [Version Grafico Actor Componente]
 0
-28.9062
-56.2628
-46.4844
-78.8501
+30.0781
+46.2013
+47.6562
+68.7885
 CCDroneMng
 [FinActoresComponente]
 [Uniones]

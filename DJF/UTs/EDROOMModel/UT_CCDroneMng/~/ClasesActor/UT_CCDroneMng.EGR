@@ -69,10 +69,10 @@ EDROOMprioNormal
  
 [Version Grafico Actor Componente]
 0
-25.7813
-18.6859
-43.3594
-41.2731
+26.1719
+10.883
+43.75
+33.4702
 CCDroneMngTester
 [Version Actor Componente]
 2
@@ -86,10 +86,10 @@ EDROOMprioNormal
  
 [Version Grafico Actor Componente]
 0
-28.9062
-56.2628
-46.4844
-78.8501
+26.1719
+59.5483
+43.75
+82.1355
 CCDroneMng
 [FinActoresComponente]
 [Uniones]
